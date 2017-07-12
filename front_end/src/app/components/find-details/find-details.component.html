@@ -1,0 +1,50 @@
+
+<div class="container" >
+  <div class="navigation">
+    <div class="title">
+      <h3>Search <span>Hotels</span></h3>
+      <br/>
+    </div>
+  </div>
+
+
+    <form class="search-box">
+        <div class="input-group col-md-12 ">
+            <span class="input-group-addon" id="basic-addon1" style="  height: 50px"><i class="material-icons">search</i> </span>
+            <input class="form-control" style="  height: 50px;" aria-describedby="basic-addon1" type="text" placeholder="Enter city name..." name="location" [(ngModel)]="location" (keyup)="searchLocation()">
+            <div class="alert alert-success" role="alert"> 25 hottels Found</div>
+        </div>
+    </form>
+
+
+
+  <div class="col-md-12 form">
+    <md-card class="rm-mar-pad">
+    <div style="width: 100%" class="rm-mar-pad">
+      <span style="width: 10%;display: inline-block">#</span>
+      <span style="width: 30%;display: inline-block">Hotel Name</span>
+      <span style="width: 40%; display: inline-block">Hotel Address</span>
+      <span style="width: 15%; display: inline-block">Hotel Location</span>
+    </div>
+    </md-card>
+    <md-card class="rm-mar-pad" style="height: 300px; overflow-y: auto;">
+    <table style="width: 100%">
+      <tr>
+        <th style="width: 10%;"></th>
+        <th style="width: 30%;"></th>
+        <th style="width: 40%"></th>
+        <th style="width: 15%"></th>
+      </tr>
+        <tr *ngFor="let row of rows">
+          <td>#1</td>
+          <td>{{row.name}}</td>
+          <td>{{row.address}}</td>
+          <td>{{row.location}}</td>
+        </tr>
+
+      </table>
+    </md-card>
+
+  </div>
+
+</div>

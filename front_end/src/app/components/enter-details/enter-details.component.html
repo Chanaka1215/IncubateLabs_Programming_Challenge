@@ -1,0 +1,27 @@
+
+  <div class="container" >
+    <div class="navigation">
+      <div class="title">
+        <h3>Enter new <span>Hotel</span></h3>
+        <br/>
+      </div>
+    </div>
+    <div class="col-md-12  form">
+    <form  #hotelForm="ngForm">
+      <md-input-container style="width:100%">
+        <input mdInput style="color:black" type="text" id="hotelName" name="hotelName" required [(ngModel)]="hotelModel.hName" #userName="ngModel" placeholder="Hotel Name">
+      </md-input-container>
+
+      <md-input-container style="width:100%">
+        <input mdInput style="color:black" type="text" id="hAddress" name="hAddress" required [(ngModel)]="hotelModel.hAddress" #password="ngModel" placeholder="Hotel Address">
+      </md-input-container>
+      <md-input-container style="width:100%">
+        <input mdInput style="color:black" type="text" id="hLocation" name="hLocation" required [(ngModel)]="hotelModel.hAddress" #password="ngModel" placeholder="Hotel Location">
+      </md-input-container>
+      <button md-raised-button color="primary" style="width:100%; margin-top: 5%; margin-bottom: 20px">Submit Data</button>
+
+
+    </form>
+  </div>
+
+</div>

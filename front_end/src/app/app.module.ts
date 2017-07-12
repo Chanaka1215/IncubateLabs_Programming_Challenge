@@ -19,15 +19,16 @@ import { HomeComponent } from './components/home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MdAutocompleteModule,
-  MdButtonModule, MdCardModule, MdCheckboxModule, MdDatepickerModule, MdIconModule, MdInputModule, MdListModule,
+  MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdDatepickerModule, MdIconModule, MdInputModule,
+  MdListModule,
   MdMenuModule,
   MdPaginatorModule,
   MdSelectModule,
   MdSidenavModule, MdSliderModule, MdSlideToggleModule, MdSortModule, MdTableModule,
   MdTabsModule, MdToolbarModule
 } from '@angular/material';
-import { EnterDetailsComponent } from './enter-details/enter-details.component';
-import { FindDetailsComponent } from './find-details/find-details.component';
+import { EnterDetailsComponent } from './components/enter-details/enter-details.component';
+import { FindDetailsComponent } from './components/find-details/find-details.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { FindDetailsComponent } from './find-details/find-details.component';
     MdTableModule,
     MdSortModule,
     MdCardModule,
-    MdIconModule
+    MdIconModule,
+    MdChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
