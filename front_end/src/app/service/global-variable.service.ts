@@ -5,7 +5,7 @@ export class GlobalVariableService {
   private username: string;
   private mobile: string;
   private email: string;
-  private baseURL: string;
+  private baseURL = 'http://localhost:8000';
 
   constructor() { }
   public setUsername(u: string): void {
@@ -27,11 +27,11 @@ export class GlobalVariableService {
     this.email = e;
   }
 
-  public  getEmail(): string{
+  public  getEmail(): string {
     return this.email;
   }
 
-  public getBaseUrl(): string{
+  public getBaseUrl(): string {
     return this.baseURL;
   }
 

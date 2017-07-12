@@ -7,19 +7,16 @@
     </div>
   </div>
 
-
     <form class="search-box">
         <div class="input-group col-md-12 ">
-            <span class="input-group-addon" id="basic-addon1" style="  height: 50px"><i class="material-icons">search</i> </span>
-            <input class="form-control" style="  height: 50px;" aria-describedby="basic-addon1" type="text" placeholder="Enter city name..." name="location" [(ngModel)]="location" (keyup)="searchLocation()">
-            <div class="alert alert-success" role="alert"> 25 hottels Found</div>
+            <span class="input-group-addon"  id="basic-addon1" style="  height: 50px"><i class="material-icons">search</i> </span>
+            <input class="form-control " style="  height: 50px;" aria-describedby="basic-addon1" type="text" placeholder="Enter city name..." name="location" [(ngModel)]="location" (keyup)="searchHotel()">
+            <div class="alert alert-success" role="alert"   > {{totalHotels}} Hotels Found</div>
         </div>
     </form>
 
-
-
-  <div class="col-md-12 form">
-    <md-card class="rm-mar-pad">
+  <div class="col-md-12 form" *ngIf="hotelsAvailabla">
+    <md-card class="rm-mar-pad" style="background-color: #dff0d8">
     <div style="width: 100%" class="rm-mar-pad">
       <span style="width: 10%;display: inline-block">#</span>
       <span style="width: 30%;display: inline-block">Hotel Name</span>
@@ -32,11 +29,11 @@
       <tr>
         <th style="width: 10%;"></th>
         <th style="width: 30%;"></th>
-        <th style="width: 40%"></th>
-        <th style="width: 15%"></th>
+        <th style="width: 40%;"></th>
+        <th style="width: 15%;"></th>
       </tr>
-        <tr *ngFor="let row of rows">
-          <td>#1</td>
+        <tr *ngFor="let row of rows let i=index">
+          <td># {{i+1}}</td>
           <td>{{row.name}}</td>
           <td>{{row.address}}</td>
           <td>{{row.location}}</td>

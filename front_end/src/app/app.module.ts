@@ -29,6 +29,8 @@ import {
 } from '@angular/material';
 import { EnterDetailsComponent } from './components/enter-details/enter-details.component';
 import { FindDetailsComponent } from './components/find-details/find-details.component';
+import {HttpRequestService} from "./service/http-request.service";
+import {GlobalVariableService} from "./service/global-variable.service";
 
 
 @NgModule({
@@ -69,7 +71,7 @@ import { FindDetailsComponent } from './components/find-details/find-details.com
     MdIconModule,
     MdChipsModule
   ],
-  providers: [],
+  providers: [GlobalVariableService, HttpRequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
