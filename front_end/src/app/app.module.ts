@@ -26,13 +26,17 @@ import {
   MdSidenavModule, MdSliderModule, MdSlideToggleModule, MdSortModule, MdTableModule,
   MdTabsModule, MdToolbarModule
 } from '@angular/material';
+import { EnterDetailsComponent } from './enter-details/enter-details.component';
+import { FindDetailsComponent } from './find-details/find-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    EnterDetailsComponent,
+    FindDetailsComponent
   ],
   imports: [
     BrowserModule,

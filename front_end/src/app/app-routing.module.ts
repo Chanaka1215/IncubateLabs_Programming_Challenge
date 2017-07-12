@@ -10,7 +10,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './components/login/login.component';
-import {HomeComponent} from "./components/home/home.component";
+import {HomeComponent} from './components/home/home.component';
+import {EnterDetailsComponent} from "./enter-details/enter-details.component";
+import {FindDetailsComponent} from "./find-details/find-details.component";
 
 const routes: Routes = [
   {
@@ -19,7 +21,17 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    children: [
+      {
+        path: 'enter',
+        component: EnterDetailsComponent,
+      },
+      {
+        path: 'find',
+        component: FindDetailsComponent,
+      }
+    ]
   }
 ];
 
