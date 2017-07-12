@@ -15,13 +15,11 @@ import {HomeComponent} from "./components/home/home.component";
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
-    children: []
+    component: LoginComponent
   },
   {
     path: 'home',
-    component: HomeComponent,
-    children: []
+    component: HomeComponent
   }
 ];
 

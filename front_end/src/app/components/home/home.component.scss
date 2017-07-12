@@ -1,28 +1,21 @@
-/*
-* Created by         : Chanaka Fernando.
-* Date               : Wed, 7/12/2017 .
-* Email              : nuwan.c.fernando@gmail.com.
-* LinkedIn           : https://www.linkedin.com/in/n-chanaka-fernando
-* Belongs to Project : incubateLabsFrontEnd.
-* Package            : .
-*/
 
-.navbar-nav li button {
-  height: 50px;
+.nav-buttons{
+  float:right;
+  display:inline;
+  margin-right:0px;
   width: 100%;
-  color: black;
-  margin-top:5px;
-  margin-bottom: 5px;
-  border-radius: 0%;
-  font-weight: 700;
-  margin-left: 0%;
+  clear:left;
+}
+.nav-buttons button{
+  width: 100%;
+}
+.nav-buttons button:hover{
+  color: #00a8ff;
 }
 
 .rm-mar-pad{
   margin: 0%;
-  margin-left: 5px;
   padding: 0%;
 }
-.navbar-nav li button:hover{
-  color: #00a8ff;
-}
+
+
