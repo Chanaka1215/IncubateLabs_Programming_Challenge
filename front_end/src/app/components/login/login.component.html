@@ -6,3 +6,54 @@
  * Belongs to Project : incubateLabsFrontEnd.
  * Package            : .
  *-->
+
+
+<div class="login-page">
+<div class="col-md-4 col-md-offset-4 login-box">
+<md-tab-group  md-dynamic-height="true" >
+  <md-tab  label="Login">
+    <form  #loginForm="ngForm">
+      <br/>
+      <md-input-container style="width:100%">
+        <input mdInput style="color:black" type="text" id="userName" name="userName" required [(ngModel)]="Loginmodel.name" #userName="ngModel" placeholder="User Name">
+      </md-input-container>
+
+      <md-input-container style="width:100%">
+        <input mdInput style="color:black" type="password" id="password" name="password" required [(ngModel)]="Loginmodel.password" #password="ngModel" placeholder="Password">
+      </md-input-container>
+
+      <button md-raised-button color="primary"style="width:100%; margin-top: 15%; margin-bottom: 10px">Login</button>
+    </form>
+
+  </md-tab>
+
+  <md-tab label="Register" >
+    <form class="form-well" #regForm="ngForm">
+      <br/>
+      <md-input-container style="width:100%" >
+        <input mdInput  style="color:black" type="text" id="Name" name="name" required [(ngModel)]="regModel.userName" #name="ngModel" placeholder="User Name">
+      </md-input-container>
+      <md-input-container style="width:100%">
+        <input mdInput style="color:black" type="text" id="phone" name="mobile" required [(ngModel)]="regModel.mobile" #mobile="ngModel" placeholder="Mobile">
+      </md-input-container>
+      <md-input-container style="width:100%">
+        <input mdInput style="color:black" type="email" id="email" name="email" required [(ngModel)]="regModel.email" #email="ngModel" placeholder="Email">
+      </md-input-container>
+      <md-input-container style="width:100%">
+        <input mdInput style="color:black" type="password" id="pass" name="pass" required [(ngModel)]="Loginmodel.password" #pass="ngModel" placeholder="Password">
+      </md-input-container>
+
+      <md-input-container style="width:100%">
+        <input mdInput style="color:black" type="password" id="repassr" name="repass" required [(ngModel)]="regModel.rePassword" #repass="ngModel" placeholder="ReEnter Password">
+      </md-input-container>
+      <br/>
+      <button md-raised-button color="primary"style="width:100%; margin-top: 2%; margin-bottom: 10px">Register</button>
+
+    </form>
+
+  </md-tab>
+</md-tab-group>
+
+
+</div>
+</div>

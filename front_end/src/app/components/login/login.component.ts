@@ -8,6 +8,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
+import {LoginModel, RegisterModel} from './login.models';
 
 
 
@@ -17,8 +18,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  public Loginmodel= new LoginModel('', '');
+  public regModel = new RegisterModel('', 0, '', '', '');
 
   constructor() { }
+
 
   ngOnInit() {
   }

@@ -6,3 +6,23 @@
 * Belongs to Project : incubateLabsFrontEnd.
 * Package            : .
 */
+
+.navbar-nav li button {
+  height: 50px;
+  width: 100%;
+  color: black;
+  margin-top:5px;
+  margin-bottom: 5px;
+  border-radius: 0%;
+  font-weight: 700;
+  margin-left: 0%;
+}
+
+.rm-mar-pad{
+  margin: 0%;
+  margin-left: 5px;
+  padding: 0%;
+}
+.navbar-nav li button:hover{
+  color: #00a8ff;
+}
