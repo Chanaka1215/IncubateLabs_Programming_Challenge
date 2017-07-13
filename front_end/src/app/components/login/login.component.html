@@ -21,8 +21,9 @@
       <md-input-container style="width:100%">
         <input mdInput style="color:black" type="password" id="password" name="password" required [(ngModel)]="loginmodel.password" #password="ngModel" placeholder="Password">
       </md-input-container>
+      <div *ngIf="loginResponceMsg != null" class="alert alert-info"  style="height: 50px;font-size: 16px">{{loginResponceMsg}}</div>
 
-      <button md-raised-button color="primary"style="width:100%; margin-top: 15%; margin-bottom: 10px">Login</button>
+      <button md-raised-button color="primary"style="width:100%; margin-top: 15%; margin-bottom: 10px" (click)="checkLogin()">Login</button>
     </form>
 
   </md-tab>

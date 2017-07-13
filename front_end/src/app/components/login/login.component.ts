@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 import {LoginModel, RegisterModel} from './login.models';
 import {HttpRequestService} from '../../service/http-request.service';
 import {GlobalVariableService} from '../../service/global-variable.service';
+import {Router} from "@angular/router";
 
 
 
@@ -20,23 +21,61 @@ import {GlobalVariableService} from '../../service/global-variable.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  public loginmodel= new LoginModel('', '');
+  public loginmodel = new LoginModel('', '');
   public regModel = new RegisterModel('', '', '', '');
   public passMatch = 0;
+  public loginResponceMsg :string;
 
-  constructor(private _httpService: HttpRequestService, private _global: GlobalVariableService) { }
+  constructor(private _httpService: HttpRequestService, private _global: GlobalVariableService, private _router: Router) {
+  }
 
 
   ngOnInit() {
   }
 
+
+
+  checkLogin():void {
+    var object = this.loginmodel;
+    var responce: any;
+    if(this.loginmodel.name.length >= 5 && this.loginmodel.name.length <= 10 ){
+      if(this.loginmodel.password.length === 8 ){
+        console.log('happy');
+        this._httpService.userLogin(object)
+          .subscribe(
+            data => responce = data.status,
+            error => {
+              alert(error.message);
+              this.loginResponceMsg= 'Error occured when connecting to server';
+            },
+            () => {
+              console.log('success');
+              if(200 === 200){
+                this._router.navigate(['/find']);
+                this.loginResponceMsg= 'Successfully loged in';
+              } else if (responce === 400){
+                this.loginResponceMsg = 'User does not exist';
+              } else {
+                this.loginResponceMsg = 'Internal Error occured';
+              }
+            }
+
+        );
+      }else {
+        this.loginResponceMsg = 'passwoed must have 8 characters'
+      }
+    }else {
+      this.loginResponceMsg = 'user name must have 5-10 charcters ';
+    }
+  }
+
+
   regFormValidation(): void {
     var message: string;
-    message = this. isValidUser();
+    message = this.isValidUser();
     console.log(message);
 
   }
-
 
 
   paswordMacher(): boolean {
@@ -44,37 +83,41 @@ export class LoginComponent implements OnInit {
     const pass = this.regModel.password;
     const rePass = this.regModel.rePassword;
     console.log(pass + ' ' + rePass);
-    if (rePass === '' && pass === ''){
+    if (rePass === '' && pass === '') {
       this.passMatch = 0;
-    }else if ( pass !== rePass && (rePass === '' || pass === '')){
+    } else if (pass !== rePass && (rePass === '' || pass === '')) {
       this.passMatch = 1;
-    }else if ( pass !== rePass && (rePass !== '' || pass !== '')){
+    } else if (pass !== rePass && (rePass !== '' || pass !== '')) {
       this.passMatch = 1;
-    }else if ( pass !== '' && rePass === ''){
+    } else if (pass !== '' && rePass === '') {
       this.passMatch = 1;
-    }else if ( pass !== '' && rePass === '') {
+    } else if (pass !== '' && rePass === '') {
       this.passMatch = 0;
-    }else if (pass === rePass){
+    } else if (pass === rePass) {
       this.passMatch = 2;
       return true;
-    }else {
+    } else {
       this.passMatch = 1;
     }
 
-    if (this.passMatch === 1 && this.regModel.password.length === 8){
+    if (this.passMatch === 1 && this.regModel.password.length === 8) {
       return true;
-    }else {
+    } else {
       return false;
     }
   }
 
   isValidEmail(): boolean {
-    var male = this.regModel.email;
-    var pattern = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';
-      alert(male.match(pattern));
-      // return male.match(pattern);
-      return pattern.test(male);
+    var male: string = this.regModel.email;
+    let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+
+    if (male != "" && (male.length <= 5 || !EMAIL_REGEXP.test(male))) {
+      return false;
     }
+
+     return true;
+  }
+
 
     isValidName():boolean{
     var name = this.regModel.userName;
@@ -90,10 +133,13 @@ export class LoginComponent implements OnInit {
     if (this.paswordMacher() && this.isValidEmail() && this.isValidName()){
       const user = this.regModel;
       let responce : number;
-      this._httpService.checkUserData(user)
+      this._httpService.registerNewUser(user)
         .subscribe(
           data => responce = data.status,
-          error => alert(error.message),
+          error => {
+            alert(error.message);
+            return 'Error occure whith connection';
+            },
           () => {
             console.log('sucsess');
             if (responce === 200){

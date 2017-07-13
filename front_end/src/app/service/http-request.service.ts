@@ -31,13 +31,23 @@ export class HttpRequestService {
       .map(res => res.json());
   }
 
-  checkUserData(object: any) {
+  registerNewUser(object: any) {
     console.log('access postLoggingData...');
     const obj = JSON.stringify(object);
     const body = obj;
     const header = new Headers();
     header.append('Content-Type', 'application/json');
     return this._http.post(this._global.getBaseUrl() + '/post/check-user', body, {headers: header})
+      .map(res => res.json());
+  }
+
+  userLogin(object: any) {
+    console.log('access postLoggingData...');
+    const obj = JSON.stringify(object);
+    const body = obj;
+    const header = new Headers();
+    header.append('Content-Type', 'application/json');
+    return this._http.post(this._global.getBaseUrl() + '/post/login', body, {headers: header})
       .map(res => res.json());
   }
 
