@@ -6,22 +6,47 @@
         <br/>
       </div>
     </div>
-    <div class="col-md-12  form">
-    <form  #hotelForm="ngForm">
+
+
+    <div (click)="onContainerClicked($event)" class="modal fade" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
+         [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
+
+      <div class="modal-dialog" >
+        <div class="alert alert-success ">
+            Well done! Your submision was sucessful.
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="col-md-12  form ">
+
+      <form  #hotelForm="ngForm" >
       <md-input-container style="width:100%">
-        <input mdInput style="color:black" type="text" id="hotelName" name="hotelName" required [(ngModel)]="hotelModel.hName" #userName="ngModel" placeholder="Hotel Name">
+        <input mdInput style="color:black" type="text" id="hName" name="hlName" required [(ngModel)]="hotelModel.hName" #hName="ngModel" placeholder="Hotel Name">
       </md-input-container>
 
       <md-input-container style="width:100%">
-        <input mdInput style="color:black" type="text" id="hAddress" name="hAddress" required [(ngModel)]="hotelModel.hAddress" #password="ngModel" placeholder="Hotel Address">
+        <input mdInput style="color:black" type="text" id="hAddress" name="hAddress" required [(ngModel)]="hotelModel.hAddress" #hAddress="ngModel" placeholder="Hotel Address">
       </md-input-container>
       <md-input-container style="width:100%">
-        <input mdInput style="color:black" type="text" id="hLocation" name="hLocation" required [(ngModel)]="hotelModel.hAddress" #password="ngModel" placeholder="Hotel Location">
+        <input mdInput style="color:black" type="text" id="hLocation" name="hLocation" required [(ngModel)]="hotelModel.hLocation" #hLocation="ngModel" placeholder="Hotel Location">
       </md-input-container>
-      <button md-raised-button color="primary" style="width:100%; margin-top: 5%; margin-bottom: 20px">Submit Data</button>
+      <button md-raised-button color="primary" style="width:100%; margin-top: 5%; margin-bottom: 20px" (click)="postData()">Submit Data</button>
 
 
     </form>
   </div>
 
 </div>
+
+

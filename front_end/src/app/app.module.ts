@@ -24,13 +24,13 @@ import {
   MdMenuModule,
   MdPaginatorModule,
   MdSelectModule,
-  MdSidenavModule, MdSliderModule, MdSlideToggleModule, MdSortModule, MdTableModule,
+  MdSidenavModule, MdSliderModule, MdSlideToggleModule, MdSnackBar, MdSortModule, MdTableModule,
   MdTabsModule, MdToolbarModule
 } from '@angular/material';
-import { EnterDetailsComponent } from './components/enter-details/enter-details.component';
+import { EnterDetailsComponent} from './components/enter-details/enter-details.component';
 import { FindDetailsComponent } from './components/find-details/find-details.component';
-import {HttpRequestService} from "./service/http-request.service";
-import {GlobalVariableService} from "./service/global-variable.service";
+import {HttpRequestService} from './service/http-request.service';
+import {GlobalVariableService} from './service/global-variable.service';
 
 
 @NgModule({
@@ -71,7 +71,8 @@ import {GlobalVariableService} from "./service/global-variable.service";
     MdIconModule,
     MdChipsModule
   ],
-  providers: [GlobalVariableService, HttpRequestService],
-  bootstrap: [AppComponent]
+  providers: [GlobalVariableService, HttpRequestService, MdSnackBar],
+  bootstrap: [AppComponent],
+  entryComponents: [EnterDetailsComponent]
 })
 export class AppModule { }

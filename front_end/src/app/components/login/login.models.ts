@@ -17,7 +17,6 @@ export class LoginModel {
 export class RegisterModel {
   constructor(
     public userName: string,
-    public mobile: number,
     public password: string,
     public rePassword: string,
     public email: string,

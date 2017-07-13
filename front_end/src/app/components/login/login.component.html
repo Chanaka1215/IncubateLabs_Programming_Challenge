@@ -15,11 +15,11 @@
     <form  #loginForm="ngForm">
       <br/>
       <md-input-container style="width:100%">
-        <input mdInput style="color:black" type="text" id="userName" name="userName" required [(ngModel)]="Loginmodel.name" #userName="ngModel" placeholder="User Name">
+        <input mdInput style="color:black" type="text" id="userName" name="userName" required [(ngModel)]="loginmodel.name" #userName="ngModel" placeholder="User Name">
       </md-input-container>
 
       <md-input-container style="width:100%">
-        <input mdInput style="color:black" type="password" id="password" name="password" required [(ngModel)]="Loginmodel.password" #password="ngModel" placeholder="Password">
+        <input mdInput style="color:black" type="password" id="password" name="password" required [(ngModel)]="loginmodel.password" #password="ngModel" placeholder="Password">
       </md-input-container>
 
       <button md-raised-button color="primary"style="width:100%; margin-top: 15%; margin-bottom: 10px">Login</button>
@@ -33,21 +33,25 @@
       <md-input-container style="width:100%" >
         <input mdInput  style="color:black" type="text" id="Name" name="name" required [(ngModel)]="regModel.userName" #name="ngModel" placeholder="User Name">
       </md-input-container>
-      <md-input-container style="width:100%">
-        <input mdInput style="color:black" type="text" id="phone" name="mobile" required [(ngModel)]="regModel.mobile" #mobile="ngModel" placeholder="Mobile">
-      </md-input-container>
+      <!--<md-input-container style="width:100%">-->
+        <!--<input mdInput style="color:black" type="text" id="phone" name="mobile" required [(ngModel)]="regModel.mobile" #mobile="ngModel" placeholder="Mobile">-->
+      <!--</md-input-container>-->
       <md-input-container style="width:100%">
         <input mdInput style="color:black" type="email" id="email" name="email" required [(ngModel)]="regModel.email" #email="ngModel" placeholder="Email">
       </md-input-container>
       <md-input-container style="width:100%">
-        <input mdInput style="color:black" type="password" id="pass" name="pass" required [(ngModel)]="Loginmodel.password" #pass="ngModel" placeholder="Password">
+        <input mdInput style="color:black" type="password" id="pass" name="pass" required [(ngModel)]="regModel.password" #pass="ngModel" placeholder="Password" (keyup)="paswordMacher()">
       </md-input-container>
 
       <md-input-container style="width:100%">
-        <input mdInput style="color:black" type="password" id="repassr" name="repass" required [(ngModel)]="regModel.rePassword" #repass="ngModel" placeholder="ReEnter Password">
+        <input mdInput style="color:black ; " type="password" id="repass" name="repass" required [(ngModel)]="regModel.rePassword" #repass="ngModel" placeholder="ReEnter Password" (keyup)="paswordMacher()">
       </md-input-container>
+        <div *ngIf="passMatch == 2" class="alert alert-success" role="alert">match passwords</div>
+        <div *ngIf="passMatch == 1" class="alert alert-danger" role="alert">Does not match passwords</div>
+
+
       <br/>
-      <button md-raised-button color="primary"style="width:100%; margin-top: 2%; margin-bottom: 10px">Register</button>
+      <button md-raised-button color="primary"style="width:100%; margin-top: 2%; margin-bottom: 10px" (click)="regFormValidation()">Register</button>
 
     </form>
 
