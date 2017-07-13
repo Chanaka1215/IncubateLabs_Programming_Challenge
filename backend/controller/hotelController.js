@@ -28,19 +28,20 @@
              }
          });
 
-         utills.DBConnection().close();
          
      });
 
      /**
       * assign new data to the model
       */
-     app.post('/post/new-hotel',function (req,res) {
-         var newHotel = hotelModel.Hotels({ hotelName  :{type:String,require:true,unique:true},
-             rooms      :req.body.rooms,
+     app.post('/post/hotel',function (req,res) {
+         console.log(req.body)
+         utills.DBConnection();
+         var newHotel = hotelModel.Hotels({
+             hotelName  :req.body.hName,
              address    :req.body.hAddress,
              city       :req.body.hLocation,
-             enterdBy   :req.body.enterBy
+             enterBy   :req.body.enterBy
          });
 
          /**
@@ -56,7 +57,6 @@
                  res.status(200).send({message:'successfully  saved new user',status:200,content:''})
 
              }
-             utills.DBConnection().close();
          });
      });
 

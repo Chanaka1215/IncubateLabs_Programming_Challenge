@@ -14,7 +14,7 @@ var schema  = mongoose.Schema;
 var user = new schema({
     userName :{type:String,require:true,unique:true},
     password :{type:String,require:true},
-    eMail    :{type:String,require:true,unique:true},
+    eMail    :{type:String,require:true},
     regDate  :{type:String,require:true}
 });
 

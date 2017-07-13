@@ -9,11 +9,13 @@
 
 var express =require('express');
 var bodyParser = require('body-parser');
+const cors = require('cors');
 
 
 var config = require('./app-config.json');
 var utills = require('./utills');
-const cors = require('cors');
+var controllers = require('./controller/index');
+
 
 var app = express();
 app.use(bodyParser.json({limit:'1mb'}));
@@ -21,13 +23,17 @@ app.use(bodyParser.urlencoded({extended:true, limit:'1mb'}));
 app.use(cors());
 
 
+controllers.controllers(app);
+
 
 app.listen(config.SERVER_PORT,function (res,err){
     if(err){
         console.log('Server did not started');
         console.log('Please Check the error'+ err);
         res.status(500);
+    }else {
+        console.log('listnnig on port ' +config.SERVER_PORT)
     }
-    var msg ='listnnig on port ' +config.SERVER_PORT;
+
 
 });

@@ -9,6 +9,7 @@
 
 
 var utills = require('./utills');
+var config = require('./app-config.json');
 
 function dbConnection() {
 
@@ -25,20 +26,20 @@ function dbConnection() {
 
         // When successfully connected
         mongoose.connection.on('connected', function () {
-            logger('Mongoose default connection open ',200);
+            console.log('Mongoose default connection open ',200);
         });
         // If the connection throws an error
         mongoose.connection.on('error',function (err) {
-            logger('connection error:',500,err);
+            console.log('connection error:',500,err);
         });
         // When the connection is disconnected
         mongoose.connection.on('disconnected', function () {
-            logger('Mongoose default connection disconnected',500);
+            console.log('Mongoose default connection disconnected',500);
         });
         // If the Node process ends, close the Mongoose connection
         process.on('SIGINT', function() {
             mongoose.connection.close(function () {
-                logger('Mongoose default connection disconnected through app termination',200);
+                console.log('Mongoose default connection disconnected through app termination',200);
                 process.exit(0);
             });
         });
