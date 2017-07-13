@@ -40,26 +40,26 @@
              rooms      :req.body.rooms,
              address    :req.body.hAddress,
              city       :req.body.hLocation,
-             enterdBy   :req.body.enterBy});
+             enterdBy   :req.body.enterBy
+         });
+
+         /**
+          * this method will save the model into database
+          */
+         newHotel.save(function (err) {
+             utills.DBConnection();
+             if(err){
+                 console.log('error occur'+err.message)
+                 res.status(500).send({message:err.message,status:500,content:''})
+             }else {
+                 console.log('Sucesfully saved new hotel');
+                 res.status(200).send({message:'successfully  saved new user',status:200,content:''})
+
+             }
+             utills.DBConnection().close();
+         });
      });
 
-     /**
-      * this method will save the model into database
-      */
-     newHotel.save(function (err) {
-         utills.DBConnection();
-         if(err){
-             console.log('error occur'+err.message)
-            res.status(500).send({message:err.message,status:500,content:''})
-         }else {
-             console.log('Sucesfully saved new hotel');
-             res.status(200).send({message:'successfully  saved new user',status:200,content:''})
 
-         }
-         utills.DBConnection().close();
-     });
-
-
-     
      
  };
