@@ -7,3 +7,27 @@
  * Package            : .
  */
 
+var express =require('express');
+var bodyParser = require('body-parser');
+
+
+var config = require('./app-config.json');
+var utills = require('./utills');
+const cors = require('cors');
+
+var app = express();
+app.use(bodyParser.json({limit:'1mb'}));
+app.use(bodyParser.urlencoded({extended:true, limit:'1mb'}));
+app.use(cors());
+
+
+
+app.listen(config.SERVER_PORT,function (res,err){
+    if(err){
+        console.log('Server did not started');
+        console.log('Please Check the error'+ err);
+        res.status(500);
+    }
+    var msg ='listnnig on port ' +config.SERVER_PORT;
+
+});
