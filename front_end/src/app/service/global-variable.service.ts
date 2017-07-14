@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
 export class GlobalVariableService {
   public username: string;
   public email: string;
-  public hotelName:string;
-  public baseURL = 'http://54.71.181.55:8000/';
-  public session : boolean = false;
+  public hotelName: string;
+  public baseURL = 'http://54.71.181.55:8001/';
+  public session = false;
 
   constructor() { }
   public setUsername(u: string): void {
@@ -26,12 +26,12 @@ export class GlobalVariableService {
   }
 
 
-  public setSession(log:boolean){
-    console.log("set session done");
-    this.session=log;
+  public setSession(log: boolean){
+    console.log('set session done');
+    this.session = log;
   }
   public getSession(){
-    console.log("session returened");
+    console.log('session returened');
     return this.session;
   }
 
