@@ -9,6 +9,7 @@
  var utills = require('../utills');
  var hotelModel = require('../models/hotelModel');
  var cityController =require('./cityController');
+ var userController = require('./userController');
 
  module.exports.hotelControler = function (app) {
 
@@ -62,16 +63,70 @@
          });
      });
 
-     var SendFullDetails = function (location) {
-          var result ={
-              hName:'',
-              hAddress:'',
-              hDesc :'',
-              hCity hDist hPro hZip hEnterByhEnterByE}}</td>
 
-         cityController.FindCityByName(location);
 
-     }
+
+     /**
+      * this method reteve fyull details
+      */
+     app.get('/get/details/:hotel',function (req,res) {
+         console.log("accesss to the method");
+         utills.DBConnection();
+         var result ={
+             hName:'',
+             hAddress:'',
+             hDesc :'',
+             hCity :'',
+             hDist :'',
+             hPro  :'',
+             hZip :'',
+             hEnterBy:'',
+             hEnterByE:''
+         };
+
+         var selection  ={hotelName:req.params.hotel};
+         var projection ={__v:false,_id:false};
+         console.log("parameres"+ req.params.hotel);
+
+         hotelModel.Hotels.find(selection,projection,function (err,data) {
+
+             console.log("hotel data object"+ data);
+             if(err){
+                 res.status(400).send({message:'error',status:400,content:result});
+             }else {
+                 result.hName    =data[0].hotelName;
+                 result.hAddress = data[0].address;
+                 result.hCity    = data[0].city;
+                 result.hDesc    = data[0].hDesc;
+                 result.hEnterBy =data[0].enterBy;
+
+                 var cityObject =cityController.FindCityByName(data[0].city);
+                 console.log(cityObject);
+                 if(cityObject != null){
+                     result.hZip =cityObject.zip;
+                     result.hDist=cityObject.district;
+                     result.hPro=cityObject.province;
+                 }else {
+                     console.log('error ocuer while retreving data from city collection')
+                 }
+
+                 var userObject = userController.FindaUserByUserName(data[0].enterBy);
+                 console.log('user object enter data[0].enterBy '+data[0].enterBy);
+                 console.log('user object '+userObject);
+                 if(userObject != null){
+                     result.hEnterByE=userObject.eMail;
+                 }else {
+                     console.log('error ocuer while retreving data from usr collection');
+                 }
+                 res.status(200).send({message:'success',status:200,content:result});
+
+             }
+         });
+
+
+     });
+
+
 
      
  };

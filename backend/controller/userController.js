@@ -99,7 +99,30 @@ module.exports.userControler = function (app) {
         });
 
 
+
     });
+
+
+    var findaUserByUserName= function(enterdBy){
+        console.log("User controller accesed")
+        utills.DBConnection();
+        var selection  ={userName:enterdBy};
+        var projection ={__v:false,_id:false};
+
+        userModel.User.find(selection,projection,function (err,user) {
+            if(err){
+                console.log('eror occur when geting a city');
+                //return err
+                // res.status(500).send({message:'internal error',status:500,content:err});
+            }else {
+                console.log('sucessfully retreved city data');
+                //res.status(200).send({message:'success',status:200,content:user});
+                return user;
+            }
+        });
+    };
+
+    exports.FindaUserByUserName = findaUserByUserName;
 
 
 

@@ -65,13 +65,13 @@ module.exports.cityControler = function (app) {
 
     var findaCityByName= function(location){
          utills.DBConnection();
-        var selection  ={eMail:location};
+        var selection  ={cityName:location};
         var projection ={__v:false,_id:false};
 
-        userModel.User.find(selection,projection,function (err,city) {
+        cityModel.City.find(selection,projection,function (err,city) {
             if(err){
                 console.log('eror occur when geting a city');
-                return err
+                //return err
                 // res.status(500).send({message:'internal error',status:500,content:err});
             }else {
                 console.log('sucessfully retreved city data');
