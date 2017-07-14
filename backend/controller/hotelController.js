@@ -14,14 +14,14 @@
      /**
       * this method reteve data as a list
       */
-     app.get('/get/hotels',function (req,res) {
+     app.get('/get/hotels/:city',function (req,res) {
          utills.DBConnection();
-         var selection  ={city:req.params.hLocation};
+         var selection  ={city:req.params.city};
          var projection ={__v:false,_id:false};
          hotelModel.Hotels.find(selection,projection,function (err,hotelList) {
              if(err){
                  console.log('eror occur when geting hotel list');
-                 res.status(500).send({message:'internal error',status:500,content:err});
+                 res.status(200).send({message:'internal error',status:500,content:err});
              }else {
                  console.log('sucessfully retreved data');
                  res.status(200).send({message:'success',status:200,content:hotelList});
@@ -40,8 +40,9 @@
          var newHotel = hotelModel.Hotels({
              hotelName  :req.body.hName,
              address    :req.body.hAddress,
-             city       :req.body.hLocation,
-             enterBy   :req.body.enterBy
+             city       :req.body.hLocation.toUpperCase(),
+             enterBy   :req.body.enterBy,
+             hDesc     :req.body.hDesc
          });
 
          /**

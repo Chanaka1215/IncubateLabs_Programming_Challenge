@@ -13,6 +13,7 @@ import {LoginComponent} from './components/login/login.component';
 import {HomeComponent} from './components/home/home.component';
 import {EnterDetailsComponent} from './components/enter-details/enter-details.component';
 import {FindDetailsComponent} from './components/find-details/find-details.component';
+import {OverviewComponent} from "./components/overview/overview.component";
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path: 'find',
         component: FindDetailsComponent,
+      },
+      {
+        path: 'data',
+        component: OverviewComponent
       }
     ]
   }

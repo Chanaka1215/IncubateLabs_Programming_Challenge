@@ -23,12 +23,12 @@ export class HomeComponent implements OnInit {
   constructor(private _global: GlobalVariableService, private _router:Router ) { }
 
   ngOnInit() {
-    if (this._global.getSession() === false) {
-      this._router.navigate(['']);
-    }else {
+    // if (this._global.getSession() === false) {
+    //   this._router.navigate(['']);
+    // }else {
       this.loggedUser = this._global.getUserName();
       console.log( this.loggedUser);
-    }
+    // }
 
   }
 

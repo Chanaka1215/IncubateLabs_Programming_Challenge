@@ -16,12 +16,12 @@ export class FindDetailsComponent implements OnInit {
   public totalHotels = 0;
 
 
-  constructor (private _httpService: HttpRequestService, private _global: GlobalVariableService, private _router:Router) {
+  constructor (private _httpService: HttpRequestService, private _global: GlobalVariableService, private _router: Router) {
   }
   ngOnInit() {
-    if (this._global.getSession() === false) {
-      this._router.navigate(['']);
-    }
+    // if (this._global.getSession() === false) {
+    //   this._router.navigate(['']);
+    // }
   }
 
   searchHotel() {
@@ -40,6 +40,10 @@ export class FindDetailsComponent implements OnInit {
         }
 
     });
+  }
+
+  moreData(){
+    this._router.navigate(['/data']);
   }
 
 

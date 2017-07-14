@@ -23,12 +23,12 @@ export class EnterDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this._global.getSession() === false) {
-      this._router.navigate(['']);
-    }else{
+    // if (this._global.getSession() === false) {
+    //   this._router.navigate(['']);
+    // }else{
       this.hotelModel.enterBy = this._global.getUserName();
       console.log(this.hotelModel);
-    }
+    // }
   }
 
 

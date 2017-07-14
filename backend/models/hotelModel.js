@@ -14,7 +14,8 @@ var hotel = new schema({
     hotelName  :{type:String,require:true,unique:true},
     address    :{type:String,require:true},
     city       :{type:String,require:true},
-    enterBy    :{type:String, require:true}
+    enterBy    :{type:String, require:true},
+    hDesc      :String
 });
 
 exports.Hotels = mongoose.model('Hotel',hotel);
