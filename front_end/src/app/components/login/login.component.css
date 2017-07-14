@@ -1,7 +1,16 @@
+/*
+ * Created by         : Chanaka Fernando.
+ * Date               : Fri, 7/14/2017 .
+ * Email              : nuwan.c.fernando@gmail.com.
+ * LinkedIn           : https://www.linkedin.com/in/n-chanaka-fernando
+ * Belongs to Project : front_end.
+ * Package            : .
+ */
+
 .login-page{
   overflow-y: hidden ! important;
   overflow-x: hidden ! important;
-  background-image: url("/src/assets/img/welcome.jpg");
+  background-image: url("/assets/img/welcome.jpg");
   height: 100%;
   width: 100%;
   position: absolute;
@@ -17,8 +26,3 @@
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-
-//.login-box .input-items{
-//  color: black;
-//  font-size: medium;
-//}

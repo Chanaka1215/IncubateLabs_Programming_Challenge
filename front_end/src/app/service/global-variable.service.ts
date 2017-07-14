@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class GlobalVariableService {
-  private username: string;
-  private email: string;
-  private hotelName:string;
-  private baseURL = 'http://54.71.181.55:8000/';
-  private session : boolean = false;
+  public username: string;
+  public email: string;
+  public hotelName:string;
+  public baseURL = 'http://54.71.181.55:8000/';
+  public session : boolean = false;
 
   constructor() { }
   public setUsername(u: string): void {

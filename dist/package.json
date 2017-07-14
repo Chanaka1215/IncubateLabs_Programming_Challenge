@@ -1,0 +1,17 @@
+{
+  "name": "angular-app-hosting-using-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "s d n chanaka fernando",
+  "license": "ISC",
+  "dependencies": {
+    "@angular/material": "^2.0.0-beta.3",
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "path": "^0.12.7"
+  }
+}

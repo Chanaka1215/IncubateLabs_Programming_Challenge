@@ -13,9 +13,9 @@ import {Router} from "@angular/router";
 })
 export class EnterDetailsComponent implements OnInit {
   public hotelModel = new HotelModel('', '', '', '', '');
-  private response: any;
+  public response: any;
   public visible = false;
-  private visibleAnimate = false;
+  public visibleAnimate = false;
 
 
   constructor(private _httpServise: HttpRequestService, private _global: GlobalVariableService, private _router:Router) {
