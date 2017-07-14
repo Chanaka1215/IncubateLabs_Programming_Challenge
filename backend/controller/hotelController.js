@@ -98,7 +98,6 @@
                  result.hAddress = data[0].address;
                  result.hCity    = data[0].city;
                  result.hDesc    = data[0].hDesc;
-                 result.hEnterBy =data[0].enterBy;
 
                  var cityObject =cityController.FindCityByName(data[0].city);
                  console.log(cityObject);
@@ -110,14 +109,20 @@
                      console.log('error ocuer while retreving data from city collection')
                  }
 
-                 var userObject = userController.FindaUserByUserName(data[0].enterBy);
-                 console.log('user object enter data[0].enterBy '+data[0].enterBy);
-                 console.log('user object '+userObject);
-                 if(userObject != null){
-                     result.hEnterByE=userObject.eMail;
-                 }else {
-                     console.log('error ocuer while retreving data from usr collection');
-                 }
+                 userController.FindaUserByUserName(data[0].enterBy,function (user) {
+                     console.log('user object enter data[0].enterBy '+data[0].enterBy);
+                     console.log('user object '+user);
+                     if(user){
+                         console.log(user.eMail);
+                         result.hEnterByE=user.eMail;
+                     }else {
+                         console.log('error ocuer while retreving data from usr collection');
+                     }
+
+                 });
+
+
+
                  res.status(200).send({message:'success',status:200,content:result});
 
              }
