@@ -22,7 +22,7 @@ function dbConnection() {
         return true;
     }else{
         mongoose.Promise = global.Promise;
-        mongoose.connect(config.DB_HOST+':'+config.DB_PORT+'/'+config.DB_NAME);
+        mongoose.connect("mongodb://Chanaka Fernando:Chanaka#FIT@2013@ds157712.mlab.com:57712/incubate-lab-assignment");
 
         // When successfully connected
         mongoose.connection.on('connected', function () {
