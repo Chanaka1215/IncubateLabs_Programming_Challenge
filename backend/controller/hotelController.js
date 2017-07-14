@@ -8,6 +8,7 @@
  */
  var utills = require('../utills');
  var hotelModel = require('../models/hotelModel');
+ var cityController =require('./cityController');
 
  module.exports.hotelControler = function (app) {
 
@@ -61,6 +62,16 @@
          });
      });
 
+     var SendFullDetails = function (location) {
+          var result ={
+              hName:'',
+              hAddress:'',
+              hDesc :'',
+              hCity hDist hPro hZip hEnterByhEnterByE}}</td>
+
+         cityController.FindCityByName(location);
+
+     }
 
      
  };
