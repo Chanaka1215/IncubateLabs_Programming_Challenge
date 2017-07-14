@@ -43,7 +43,7 @@ export class FindDetailsComponent implements OnInit {
   }
 
   moreData(){
-    this._router.navigate(['/data']);
+    this._router.navigate(['/home/data']);
   }
 
 
