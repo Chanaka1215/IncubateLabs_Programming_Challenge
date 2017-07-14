@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpRequestService} from '../../service/http-request.service';
 import {GlobalVariableService} from '../../service/global-variable.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-find-details',
@@ -15,7 +16,12 @@ export class FindDetailsComponent implements OnInit {
   public totalHotels = 0;
 
 
-  constructor (private _httpService: HttpRequestService, private _globalService: GlobalVariableService) {
+  constructor (private _httpService: HttpRequestService, private _global: GlobalVariableService, private _router:Router) {
+  }
+  ngOnInit() {
+    if (this._global.getSession() === false) {
+      this._router.navigate(['']);
+    }
   }
 
   searchHotel() {
@@ -36,7 +42,6 @@ export class FindDetailsComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+
 
 }

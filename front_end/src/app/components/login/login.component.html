@@ -49,10 +49,11 @@
       </md-input-container>
         <div *ngIf="passMatch == 2" class="alert alert-success" role="alert">match passwords</div>
         <div *ngIf="passMatch == 1" class="alert alert-danger" role="alert">Does not match passwords</div>
+      <div *ngIf="!regResponceMsg != null" class="alert alert-info" role="alert">{{regResponceMsg}}</div>
 
 
       <br/>
-      <button md-raised-button color="primary"style="width:100%; margin-top: 2%; margin-bottom: 10px" (click)="regFormValidation()">Register</button>
+      <button md-raised-button color="primary"style="width:100%; margin-top: 2%; margin-bottom: 10px" (click)="isValidUser()">Register</button>
 
     </form>
 

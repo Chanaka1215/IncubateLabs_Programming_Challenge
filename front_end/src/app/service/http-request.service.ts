@@ -12,7 +12,7 @@ export class HttpRequestService {
   }
 
   getHotel() {
-    return this._http.get(this._global.getBaseUrl() + '/get/hotels')
+    return this._http.get(this._global.getBaseUrl() + '/get/hotels/' + this.location.toUpperCase())
       .map(res => res.json());
   }
 
@@ -37,7 +37,7 @@ export class HttpRequestService {
     const body = obj;
     const header = new Headers();
     header.append('Content-Type', 'application/json');
-    return this._http.post(this._global.getBaseUrl() + '/post/check-user', body, {headers: header})
+    return this._http.post(this._global.getBaseUrl() + '/post/register', body, {headers: header})
       .map(res => res.json());
   }
 

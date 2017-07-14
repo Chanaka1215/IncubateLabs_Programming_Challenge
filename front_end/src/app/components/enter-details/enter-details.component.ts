@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {HotelModel} from './enter-details.model';
-import {FormControl} from '@angular/forms';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 import {HttpRequestService} from '../../service/http-request.service';
 import {GlobalVariableService} from '../../service/global-variable.service';
-import {MdDialog, MdSnackBar} from '@angular/material';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-enter-details',
@@ -13,30 +12,26 @@ import {MdDialog, MdSnackBar} from '@angular/material';
   styleUrls: ['./enter-details.component.css']
 })
 export class EnterDetailsComponent implements OnInit {
-  _httpService: any;
   public hotelModel = new HotelModel('', '', '', '', '');
-  private today: string;
-  private response : any;
-  // public displaya = false;
-  // public block  = true;
+  private response: any;
   public visible = false;
   private visibleAnimate = false;
 
 
-
-  constructor(private _httpServise: HttpRequestService, private _global: GlobalVariableService, public snackBar: MdSnackBar) {
+  constructor(private _httpServise: HttpRequestService, private _global: GlobalVariableService, private _router:Router) {
 
   }
-
-
 
   ngOnInit() {
-    this.today = new Date().toString();
-    this.hotelModel.enterDate = this.today;
-    this.hotelModel.enterBy = this._global.getEmail();
-
-
+    if (this._global.getSession() === false) {
+      this._router.navigate(['']);
+    }else{
+      this.hotelModel.enterBy = this._global.getUserName();
+      console.log(this.hotelModel);
+    }
   }
+
+
   postData() {
     const object = this.hotelModel;
     this._httpServise.postHotelData(object)
@@ -47,14 +42,22 @@ export class EnterDetailsComponent implements OnInit {
           if (this.response === 200) {
             this.show();
             console.log('Submision was sucessfull');
-
             this.hotelModel = null;
-            //this.block = false;
-
           }
         }
 
       ); }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   public regModel = new RegisterModel('', '', '', '');
   public passMatch = 0;
   public loginResponceMsg :string;
+  public regResponceMsg :string;
 
   constructor(private _httpService: HttpRequestService, private _global: GlobalVariableService, private _router: Router) {
   }
@@ -37,10 +38,9 @@ export class LoginComponent implements OnInit {
 
   checkLogin():void {
     var object = this.loginmodel;
-    var responce: any;
+    var responce: number;
     if(this.loginmodel.name.length >= 5 && this.loginmodel.name.length <= 10 ){
       if(this.loginmodel.password.length === 8 ){
-        console.log('happy');
         this._httpService.userLogin(object)
           .subscribe(
             data => responce = data.status,
@@ -49,10 +49,12 @@ export class LoginComponent implements OnInit {
               this.loginResponceMsg= 'Error occured when connecting to server';
             },
             () => {
-              console.log('success');
-              if(200 === 200){
-                this._router.navigate(['/find']);
+              console.log('success1 ');
+              if(responce === 200){
                 this.loginResponceMsg= 'Successfully loged in';
+                this._global.setUsername(this.loginmodel.name);
+                this._global.setSession(true);
+                this._router.navigate(['/home/find']);
               } else if (responce === 400){
                 this.loginResponceMsg = 'User does not exist';
               } else {
@@ -62,7 +64,7 @@ export class LoginComponent implements OnInit {
 
         );
       }else {
-        this.loginResponceMsg = 'passwoed must have 8 characters'
+        this.loginResponceMsg = 'passwoed must have 8 characters';
       }
     }else {
       this.loginResponceMsg = 'user name must have 5-10 charcters ';
@@ -70,12 +72,6 @@ export class LoginComponent implements OnInit {
   }
 
 
-  regFormValidation(): void {
-    var message: string;
-    message = this.isValidUser();
-    console.log(message);
-
-  }
 
 
   paswordMacher(): boolean {
@@ -128,40 +124,40 @@ export class LoginComponent implements OnInit {
       }
     }
 
-  isValidUser(): string {
-    const isValidPw = false;
+  isValidUser(): void {
     if (this.paswordMacher() && this.isValidEmail() && this.isValidName()){
       const user = this.regModel;
       let responce : number;
       this._httpService.registerNewUser(user)
         .subscribe(
-          data => responce = data.status,
+          data => {responce = data.status;},
           error => {
+            this.regResponceMsg = 'Error occure whith connection';
+            console.log('Error occure whith connection');
             alert(error.message);
-            return 'Error occure whith connection';
+
             },
           () => {
             console.log('sucsess');
+            this.passMatch=0;
             if (responce === 200){
-              return 'User registration succsesfull';
-            }else if (responce === 201){
-              return 'This email is already have used';
+              this.regResponceMsg =  'User registration succsesfull';
             }else if (responce === 202){
-              return 'This Username has already taken';
+              this.regResponceMsg =  'This Username has already taken';
             }else {
-              return null;
+              this.regResponceMsg =  'some error';
             }
           }
         );
     }else {
       if(!this.isValidName()){
-        return 'Check the Username it must be between 5 - 10 characters';
+        this.regResponceMsg =  'Check the Username it must be between 5 - 10 characters';
       }else if(!this.isValidEmail()){
-        return 'check your email it seems net valid';
+        this.regResponceMsg = 'check your email it seems net valid';
       }else if(this.paswordMacher()){
-        return 'Check your password it must have 8 characters';
+        this.regResponceMsg = 'Check your password it must have 8 characters';
       } else {
-        return null;
+        this.regResponceMsg =  null;
       }
     }
   }

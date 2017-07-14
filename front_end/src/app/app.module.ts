@@ -31,6 +31,7 @@ import { EnterDetailsComponent} from './components/enter-details/enter-details.c
 import { FindDetailsComponent } from './components/find-details/find-details.component';
 import {HttpRequestService} from './service/http-request.service';
 import {GlobalVariableService} from './service/global-variable.service';
+import { OverviewComponent } from './overview/overview.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {GlobalVariableService} from './service/global-variable.service';
     LoginComponent,
     HomeComponent,
     EnterDetailsComponent,
-    FindDetailsComponent
+    FindDetailsComponent,
+    OverviewComponent
   ],
   imports: [
     BrowserModule,

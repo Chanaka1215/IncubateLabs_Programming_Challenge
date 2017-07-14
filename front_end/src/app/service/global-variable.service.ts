@@ -5,7 +5,8 @@ export class GlobalVariableService {
   private username: string;
   private mobile: string;
   private email: string;
-  private baseURL = 'http://localhost:8000';
+  private baseURL = 'http://localhost:4000';
+  private session : boolean = false;
 
   constructor() { }
   public setUsername(u: string): void {
@@ -16,11 +17,13 @@ export class GlobalVariableService {
     return this.username;
   }
 
-  public setMobile(m: string): void{
-    this.mobile = m;
+  public setSession(log:boolean){
+    console.log("set session done");
+    this.session=log;
   }
-  public getMobile(): string{
-    return this.mobile;
+  public getSession(){
+    console.log("session returened");
+    return this.session;
   }
 
   public setEmail(e: string): void {

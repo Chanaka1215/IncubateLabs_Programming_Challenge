@@ -19,24 +19,27 @@
     <md-card class="rm-mar-pad" style="background-color: #dff0d8">
     <div style="width: 100%" class="rm-mar-pad">
       <span style="width: 10%;display: inline-block">#</span>
-      <span style="width: 30%;display: inline-block">Hotel Name</span>
-      <span style="width: 40%; display: inline-block">Hotel Address</span>
-      <span style="width: 15%; display: inline-block">Hotel Location</span>
+      <span style="width: 25%;display: inline-block">Hotel Name</span>
+      <span style="width: 35%; display: inline-block">Hotel Address</span>
+      <span style="width: 18%; display: inline-block">Hotel Location</span>
+      <span style="width: 7%; display: inline-block">More Info</span>
     </div>
     </md-card>
     <md-card class="rm-mar-pad" style="height: 300px; overflow-y: auto;">
     <table style="width: 100%">
       <tr>
         <th style="width: 10%;"></th>
-        <th style="width: 30%;"></th>
-        <th style="width: 40%;"></th>
+        <th style="width: 25%;"></th>
+        <th style="width: 35%;"></th>
         <th style="width: 15%;"></th>
+        <th style="width: 10%;"></th>
       </tr>
         <tr *ngFor="let row of rows let i=index">
           <td># {{i+1}}</td>
-          <td>{{row.name}}</td>
+          <td>{{row.hotelName}}</td>
           <td>{{row.address}}</td>
-          <td>{{row.location}}</td>
+          <td>{{row.city}}</td>
+          <td><button md-raised-button color="accent">More Info</button></td>
         </tr>
 
       </table>

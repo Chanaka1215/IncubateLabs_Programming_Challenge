@@ -7,7 +7,11 @@
  * Package            : .
  */
 export class HotelModel {
-  constructor(public hName: string, public  hLocation: string, public hAddress: string, public enterDate: string, public enterBy: string) {
-
-  }
+  constructor(
+    public hName: string,
+    public  hLocation: string,
+    public hAddress: string,
+    public enterBy: string,
+    public hDesc:string
+  ) {}
 }

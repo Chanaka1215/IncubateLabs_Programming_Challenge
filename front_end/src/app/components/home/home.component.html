@@ -13,13 +13,13 @@
         <button md-button><img src="/src/assets/img/hotels.png" height="50px" /></button>
       </div>
       <div class="col-md-2 rm-mar-pad nav-buttons">
-        <button md-button ><i class="material-icons">account_box</i>Usernaem</button>
+        <button md-button (click)="logout()"><i class="material-icons" >account_box</i>{{loggedUser }} logout</button>
       </div>
       <div class="col-md-2 rm-mar-pad nav-buttons">
-        <button md-button ><i class="material-icons">search</i>Find a Hotel</button>
+        <button md-button routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/home/find']"><i class="material-icons">search</i>Find a Hotel</button>
       </div>
       <div class="col-md-2 rm-mar-pad nav-buttons">
-        <button md-button ><i class="material-icons">fiber_new</i>Enter new Hotel</button>
+        <button md-button routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/home/enter']"><i class="material-icons">fiber_new</i>Enter new Hotel</button>
       </div>
 
     </div>

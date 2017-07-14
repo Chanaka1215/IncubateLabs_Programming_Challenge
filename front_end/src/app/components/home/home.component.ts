@@ -9,6 +9,8 @@
 
 
 import { Component, OnInit } from '@angular/core';
+import {GlobalVariableService} from '../../service/global-variable.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -16,10 +18,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  public loggedUser: string;
 
-  constructor() { }
+  constructor(private _global: GlobalVariableService, private _router:Router ) { }
 
   ngOnInit() {
+    if (this._global.getSession() === false) {
+      this._router.navigate(['']);
+    }else {
+      this.loggedUser = this._global.getUserName();
+      console.log( this.loggedUser);
+    }
+
+  }
+
+  logout(){
+    this._global.setSession(false) ;
+    console.log( ' logged out');
+      this._router.navigate(['']);
   }
 
 }
