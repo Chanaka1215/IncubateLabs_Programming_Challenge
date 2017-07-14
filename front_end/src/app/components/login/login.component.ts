@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   public regModel = new RegisterModel('', '', '', '');
   public passMatch = 0;
   public loginResponceMsg :string;
-  public regResponceMsg :string;
+  public regResponceMsg :string = null;
 
   constructor(private _httpService: HttpRequestService, private _global: GlobalVariableService, private _router: Router) {
   }

@@ -18,6 +18,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
+  MaterialModule,
   MdAutocompleteModule,
   MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdDatepickerModule, MdIconModule, MdInputModule,
   MdListModule,
@@ -32,6 +33,7 @@ import { FindDetailsComponent } from './components/find-details/find-details.com
 import {HttpRequestService} from './service/http-request.service';
 import {GlobalVariableService} from './service/global-variable.service';
 import { OverviewComponent } from './components/overview/overview.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 @NgModule({
@@ -71,7 +73,8 @@ import { OverviewComponent } from './components/overview/overview.component';
     MdSortModule,
     MdCardModule,
     MdIconModule,
-    MdChipsModule
+    MdChipsModule,
+    FlexLayoutModule
   ],
   providers: [GlobalVariableService, HttpRequestService, MdSnackBar],
   bootstrap: [AppComponent],
