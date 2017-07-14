@@ -38,19 +38,19 @@ module.exports.cityControler = function (app) {
      * assign new user data to the user model
      */
     app.post('/post/city',function (req,res) {
+        utills.DBConnection();
         var newCity = cityModel.City({
             zip         :req.body.zip,
-            cityName    :req.body.name,
+            cityName    :req.body.name.toUpperCase(),
             district    :req.body.district,
-            province    :req.body.zprovince,
-            entredBy    :req.body.enterBy
+            province    :req.body.province,
+            enterBy    :req.body.enterBy
         });
 
         /**
          * this method will save the model into database
          */
         newCity.save(function (err) {
-            utills.DBConnection();
             if(err){
                 console.log('error occur'+err.message)
                 res.status(500).send({message:err.message,status:500,content:''})
@@ -63,7 +63,7 @@ module.exports.cityControler = function (app) {
     });
 
 
-    var findaCityByName= function(location){
+    var findaCityByName= function(location,callback){
          utills.DBConnection();
         var selection  ={cityName:location};
         var projection ={__v:false,_id:false};
@@ -74,13 +74,15 @@ module.exports.cityControler = function (app) {
                 //return err
                 // res.status(500).send({message:'internal error',status:500,content:err});
             }else {
-                console.log('sucessfully retreved city data');
-                //res.status(200).send({message:'success',status:200,content:user});
-                return city;
+                console.log('sucessfully retreved city data'+city[0]);
+                // //res.status(200).send({message:'success',status:200,content:user});
+                // return city;
+                callback(city[0]);
             }
         });
     };
 
     exports.FindCityByName = findaCityByName;
+
 
 };

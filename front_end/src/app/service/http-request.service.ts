@@ -16,10 +16,10 @@ export class HttpRequestService {
       .map(res => res.json());
   }
 
-  // getUser() {
-  //   return this._http.get(this._global.getBaseUrl() + '/get/user')
-  //     .map(res => res.json());
-  // }
+  getHotelsByName(hotelname:string) {
+    return this._http.get(this._global.getBaseUrl() + '/get/hotels-name/'+ hotelname)
+      .map(res => res.json());
+  }
 
   postHotelData(object: any) {
     console.log('access postLoggingData...');

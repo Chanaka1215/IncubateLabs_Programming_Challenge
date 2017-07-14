@@ -34,12 +34,17 @@
         <th style="width: 15%;"></th>
         <th style="width: 10%;"></th>
       </tr>
-        <tr *ngFor="let row of rows let i=index">
+
+
+
+
+
+        <tr *ngFor="let row of rows let i=index" >
           <td># {{i+1}}</td>
           <td>{{row.hotelName}}</td>
           <td>{{row.address}}</td>
           <td>{{row.city}}</td>
-          <td><button md-raised-button color="accent" (click)="moreData()" >More Info</button></td>
+          <td><button md-raised-button color="accent" (click)="moreData(i)" >More Info</button></td>
         </tr>
 
       </table>

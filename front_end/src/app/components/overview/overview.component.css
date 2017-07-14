@@ -71,3 +71,8 @@
   padding-bottom: 10px;
 }
 
+
+.form tr{
+  text-align: left;
+  height: 30px;
+}

@@ -15,7 +15,7 @@ var city = new schema({
     cityName    :{type:String,require:true},
     district    :{type:String,require:true},
     province    :{type:String,require:true},
-    entredBy    :String
+    enterBy    :String
 
 });
 

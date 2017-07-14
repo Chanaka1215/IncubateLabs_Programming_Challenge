@@ -14,14 +14,15 @@ export class FindDetailsComponent implements OnInit {
   public rows: any;
   public hotelsAvailabla = false;
   public totalHotels = 0;
-
+  public selectedIndex:number;
+  public hotel :string;
 
   constructor (private _httpService: HttpRequestService, private _global: GlobalVariableService, private _router: Router) {
   }
   ngOnInit() {
-    // if (this._global.getSession() === false) {
-    //   this._router.navigate(['']);
-    // }
+    if (this._global.getSession() === false) {
+      this._router.navigate(['']);
+    }
   }
 
   searchHotel() {
@@ -42,7 +43,9 @@ export class FindDetailsComponent implements OnInit {
     });
   }
 
-  moreData(){
+  moreData(i: number){
+    console.log("selected "+ this.rows[i].hotelName );
+    this._global.setHotelname(this.rows[i].hotelName);
     this._router.navigate(['/home/data']);
   }
 

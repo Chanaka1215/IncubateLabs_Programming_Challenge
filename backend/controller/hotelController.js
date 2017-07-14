@@ -69,7 +69,7 @@
      /**
       * this method reteve fyull details
       */
-     app.get('/get/details/:hotel',function (req,res) {
+     app.get('/get/hotels-name/:hotel',function (req,res) {
          console.log("accesss to the method");
          utills.DBConnection();
          var result ={
@@ -92,41 +92,57 @@
 
              console.log("hotel data object"+ data);
              if(err){
-                 res.status(400).send({message:'error',status:400,content:result});
-             }else {
+                 res.status(400).send({message:'error',status:400,content:''});
+             }
+             if(data){
                  result.hName    =data[0].hotelName;
                  result.hAddress = data[0].address;
                  result.hCity    = data[0].city;
                  result.hDesc    = data[0].hDesc;
 
-                 var cityObject =cityController.FindCityByName(data[0].city);
-                 console.log(cityObject);
-                 if(cityObject != null){
-                     result.hZip =cityObject.zip;
-                     result.hDist=cityObject.district;
-                     result.hPro=cityObject.province;
-                 }else {
-                     console.log('error ocuer while retreving data from city collection')
-                 }
 
+                 console.log(";;;;;"+data[0].enterBy)
                  userController.FindaUserByUserName(data[0].enterBy,function (user) {
                      console.log('user object enter data[0].enterBy '+data[0].enterBy);
                      console.log('user object '+user);
                      if(user){
                          console.log(user.eMail);
                          result.hEnterByE=user.eMail;
+                         console.log('result . hEnterbyE' +result.hEnterByE);
                      }else {
                          console.log('error ocuer while retreving data from usr collection');
                      }
 
+
+
+                 });
+
+                 cityController.FindCityByName(data[0].city,function (city) {
+                     console.log('result city '+city);
+                     if(city){
+                         console.log(hZip =city.zip+"   **  "+ city.district);
+                         result.hZip =city.zip;
+                         result.hDist=city.district;
+                         result.hPro=city.province;
+                     }else {
+                         console.log('error ocuer while retreving data from city collection')
+                     }
+
+                     res.status(200).send({message:'success',status:200,content:result});
                  });
 
 
 
-                 res.status(200).send({message:'success',status:200,content:result});
+
+
+
+
+
 
              }
          });
+
+
 
 
      });
