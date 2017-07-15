@@ -11,8 +11,8 @@ export class HttpRequestService {
     console.log('Http Request service is ready');
   }
 
-  getHotel() {
-    return this._http.get(this._global.getBaseUrl() + '/get/hotels/' + this.location.toUpperCase())
+  getHotel(sortOrder:string) {
+    return this._http.get(this._global.getBaseUrl() + '/get/hotels/' + this.location.toUpperCase()+'/'+this.sortOrder)
       .map(res => res.json());
   }
 

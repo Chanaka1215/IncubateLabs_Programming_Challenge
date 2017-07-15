@@ -13,6 +13,15 @@
         </div>
     </form>
   <div class="col-md-12 form" *ngIf="hotelsAvailabla">
+    <input (click)="searchHotel()">
+    <md-radio-group  [(ngModel)]="favoriteSeason" >
+      <md-radio-button   [value]="1" >Accending Order</md-radio-button>
+      <md-radio-button   [value]="-1">Decending Order</md-radio-button>
+    </md-radio-group>
+    </input>
+
+
+    <div class="example-selected-value">Your favorite season is: {{favoriteSeason}}</div>
     <md-card class="rm-mar-pad" style="background-color: #dff0d8">
       <div style="width: 100%" class="rm-mar-pad">
         <span style="width: 5%;display: inline-block"></span>

@@ -16,11 +16,15 @@
      /**
       * this method reteve data as a list
       */
-     app.get('/get/hotels/:city',function (req,res) {
+     app.get('/get/hotels/:city/:orderBy',function (req,res) {
          utills.DBConnection();
+         var sortOder = req.params.orderBy;
          var selection  ={city:req.params.city};
          var projection ={__v:false,_id:false};
-         hotelModel.Hotels.find(selection,projection,function (err,hotelList) {
+         var option    ={sort: {hotelName: sortOder}};
+
+         console.log(req.params.city+' hotel list is sorted ' + req.params.orderBy);
+         hotelModel.Hotels.find(selection,projection,option,function (err,hotelList) {
              if(err){
                  console.log('eror occur when geting hotel list');
                  res.status(200).send({message:'internal error',status:500,content:err});

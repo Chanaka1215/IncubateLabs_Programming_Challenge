@@ -16,6 +16,7 @@ export class FindDetailsComponent implements OnInit {
   public totalHotels = 0;
   public selectedIndex: number;
   public hotel : string;
+  public orderBy:string='1';
 
   constructor (private _httpService: HttpRequestService, private _global: GlobalVariableService, private _router: Router) {
   }
@@ -28,7 +29,7 @@ export class FindDetailsComponent implements OnInit {
   searchHotel() {
     this._httpService.updateHotels(this.location);
 
-    this._httpService.getHotel()
+    this._httpService.getHotel(this.orderBy)
       .subscribe(list => {
         this.rows = list.content;
         this.totalHotels = this.rows.length;
