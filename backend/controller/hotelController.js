@@ -64,6 +64,35 @@
      });
 
 
+     app.post('/post/update-hotel',function (req,res) {
+         console.log(req.body)
+         utills.DBConnection();
+
+         var query = { hotelName:req.body.hName};
+         var updateData = {
+             address    :req.body.hAddress,
+             city       :req.body.hLocation.toUpperCase(),
+             enterBy    :req.body.enterBy,
+             hDesc      :req.body.hDesc
+         };
+         var option ={
+             upsert:false
+         };
+         hotelModel.findOneAndUpdate(query, updateData, option, function(err, doc){
+             if (err){
+                 console.log('error  when updating'+err.message)
+                 res.status(400).send({message:'did not match ',status:400,content: err });
+             } else {
+                 //return res.send("succesfully saved");
+                 console.log('update successfully'+doc)
+                 res.status(200).send({message:'success ',status:200,content: err });
+             }
+         });
+
+     });
+
+
+
 
 
      /**

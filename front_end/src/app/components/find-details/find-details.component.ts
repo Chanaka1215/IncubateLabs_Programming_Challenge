@@ -51,6 +51,7 @@ export class FindDetailsComponent implements OnInit {
   }
 
   update(i): void {
+    console.log('update method called');
     this._global.setHotelname(this.rows[i].hotelName);
     this._global.setUpdateObject(this.rows[i]);
     this._router.navigate(['/home/enter']);

@@ -31,6 +31,18 @@ export class HttpRequestService {
       .map(res => res.json());
   }
 
+  updateHotelData(object: any) {
+    console.log('access postLoggingData...');
+    const obj = JSON.stringify(object);
+    const body = obj;
+    const header = new Headers();
+    header.append('Content-Type', 'application/json');
+    return this._http.post(this._global.getBaseUrl() + '/post/update-hotel', body, {headers: header})
+      .map(res => res.json());
+  }
+
+
+
   registerNewUser(object: any) {
     console.log('access postLoggingData...');
     const obj = JSON.stringify(object);

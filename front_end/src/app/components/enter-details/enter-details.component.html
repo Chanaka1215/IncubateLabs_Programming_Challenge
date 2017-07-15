@@ -44,7 +44,8 @@
         <md-input-container style="width:100%">
           <input mdInput style="color:black" type="text" id="hDesc" name="hDesc" required [(ngModel)]="hotelModel.hDesc" #hDesc="ngModel" placeholder="Description ">
         </md-input-container>
-      <button md-raised-button color="primary" style="width:100%; margin-top: 5%; margin-bottom: 20px" (click)="postData()">Submit Data</button>
+        <button *ngIf="!updateMode"  md-raised-button color="primary" style="width:100%; margin-top: 5%; margin-bottom: 20px" (click)="postData()">Submit Data</button>
+        <button *ngIf="updateMode" md-raised-button color="primary" style="width:100%; margin-top: 5%; margin-bottom: 20px" (click)="updateData()">Update the Record </button>
 
 
     </form>

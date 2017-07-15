@@ -16,6 +16,7 @@ export class EnterDetailsComponent implements OnInit {
   public response: any;
   public visible = false;
   public visibleAnimate = false;
+  public updateMode = false;
 
 
   constructor(private _httpServise: HttpRequestService, private _global: GlobalVariableService, private _router:Router) {
@@ -30,6 +31,7 @@ export class EnterDetailsComponent implements OnInit {
       console.log(this.hotelModel);
 
       if(this._global.getupdateObject()){
+        this.updateMode = true;
         var obj = this._global.getupdateObject();
         console.log(obj);
         this.hotelModel.hName =obj.hotelName;
@@ -45,6 +47,25 @@ export class EnterDetailsComponent implements OnInit {
   postData() {
     const object = this.hotelModel;
     this._httpServise.postHotelData(object)
+      .subscribe(
+        data => {this.response = data.status; },
+        err  => {alert(err.message); },
+        ()   => {
+          if (this.response === 200) {
+            this.show();
+            console.log('Submision was sucessfull');
+            this.hotelModel = null;
+          }
+        }
+
+      );
+
+  }
+
+
+  updateData() {
+    const object = this.hotelModel;
+    this._httpServise.updateHotelData(object)
       .subscribe(
         data => {this.response = data.status; },
         err  => {alert(err.message); },
