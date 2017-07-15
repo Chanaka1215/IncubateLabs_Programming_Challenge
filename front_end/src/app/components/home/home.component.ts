@@ -32,6 +32,9 @@ export class HomeComponent implements OnInit {
 
   }
 
+  /**
+   * logout method
+   */
   logout():void{
     this._global.setSession(false) ;
     console.log( ' logged out');

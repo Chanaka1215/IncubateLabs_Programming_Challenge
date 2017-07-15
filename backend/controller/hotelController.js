@@ -45,9 +45,35 @@ module.exports.hotelControler = function (app) {
      });
 
 
+    /**
+     * to return all hotels in the DB
+     */
+    app.get('/get/all-hotels',function (req,res) {
+        console.log("access the end point hotel ==> "+ req.url);
+        utills.DBConnection();
+        var selection  ={};
+        var projection ={__v:false,_id:false};
+        var option    ={sort: {hotelName: 1}};
+
+        console.log('hotel list is sorted ');
+        hotelModel.Hotels.find(selection,projection,option,function (err,hotelList) {
+            if(err){
+                console.log('eror occur when geting hotel list  ==> '+err.message );
+                res.status(200).send({message:'internal error',status:500,content:err});
+            }else {
+                console.log('sucessfully retreved data');
+                res.status(200).send({message:'success',status:200,content:hotelList});
+            }
+        });
+    });
 
 
-     /**
+
+
+
+
+
+    /**
       * The end point for save  new hotel
       */
      app.post('/post/hotel',function (req,res) {
@@ -145,13 +171,13 @@ module.exports.hotelControler = function (app) {
                  result.hEnterBy = data[0].enterBy;
 
 
-                 //get a user document by pasing usename
-                 userController.FindaUserByUserName(data[0].enterBy,function (user) {
+                 //get a user document by pasing usename data will be return as a call back
+                 userController.FindaUserByUserName(data[0].enterBy,function (error,user) {
                      console.log('get user data by  '+data[0].enterBy);
                      if(user){
                          result.hEnterByE=user.eMail;
-                     }else {
-                         console.log('error ocuer while retreving data from usr collection');
+                     }else if(error){
+                         console.log('error ocuer while retreving data from usr collection ==>'+error.message);
                      }
                  });
 

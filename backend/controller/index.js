@@ -10,6 +10,7 @@
 var city  = require('./cityController');
 var hotel = require('./hotelController');
 var user  =require('./userController');
+var path = require('path');
 
 /**
  * this module work as a index
@@ -21,5 +22,16 @@ module.exports.controllers = function(app){
     city.cityControler(app);
     user.userControler(app);
     hotel.hotelControler(app);
+
+
+    /**
+     * to send the iindex html file that contain info
+     */
+    app.get('/', function (req, res) {
+        res.sendFile(path.join(__dirname, '../views', 'information.html'));
+
+    });
+
+
 
 };

@@ -18,57 +18,105 @@
 <body>
 
 <div class="container">
-    <h2>Post A driver </h2>
-    <form class="form-horizontal" action ="/bus-api/post/driver" method="post">
-        <fieldset>
-            <div class="form-group">
-                <label class="control-label col-sm-2" >Driver NTC:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="driverNTC" placeholder="Enter NTC Number">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" >Driver NIC:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="driverNIC" placeholder="Enter ID Number">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2">Driver Name:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="driverFName" placeholder="Enter First Name">
-                    <input type="text" class="form-control" name="driverLName" placeholder="Enter Last Name">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2">Date of Birth:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="driverDOB" placeholder="Enter birth Data">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-sm-2">Mobile Number:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="driverTP" placeholder="Enter Mobile number">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2">Address:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="driverAddress" placeholder="Enter Address">
-                </div>
-            </div>
+    <h1>Index File</h1>
+    <p>
+    <h4>Name : Hotel Finder API</h4>
+    <h4>Version : 1.0.0</h4>
+    <h4>Base URL : http://54.71.181.55:8001</h4>
+    <h5>Posible operations for API</h5>
+    </p>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th style="width: 5%;">#</th>
+            <th style="width: 50%;">End Point</th>
+            <th style="width: 8%;">Method</th>
+            <th style="width: 37%;">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>/</td>
+            <td>GET</td>
+            <td>Index page(This Page)</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>/get/all-user</td>
+            <td>GET</td>
+            <td>Retreve All Users</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>/get/all-cities</td>
+            <td>GET</td>
+            <td>Retreve All Cities</td>
+        </tr>
 
 
+        <tr>
+            <td>4</td>
+            <td>/get/all-hotels</td>
+            <td>GET</td>
+            <td>Retreve All hotels</td>
+        </tr>
 
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </div>
-            </div>
-        </fieldset>
-    </form>
+        <tr>
+            <td>5</td>
+            <td>/get/user/&lt User Id &gt</td>
+            <td>GET</td>
+            <td>Retreve ditails of a User by specific User Name</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>/get/city/&lt City Name &gt</td>
+            <td>GET</td>
+            <td>Retreve records by specific City Name</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>/get/hotels-name/&lt Hotel Name &gt</td>
+            <td>GET</td>
+            <td>Retreve Hotel data form HotelName </td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>/post/city</td>
+            <td>POST</td>
+            <td>Save new city city request should be like .....
+                {
+                "zip":"050000",
+                "name":"Anuradapura",
+                "district":"Anuradapura",
+                "province":"North Central",
+                "enterBy":"Your User name"
+                }
+
+            </td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>/post/user</td>
+            <td>POST</td>
+            <td>Save new User ... ***Register with the APP </td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>/post/register</td>
+            <td>POST</td>
+            <td>Login  End point ... ***Register with the web app </td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>/post/login</td>
+            <td>POST</td>
+            <td>Login end point  ... ***Register with the web app </td>
+        </tr>
+
+
+        </tbody>
+    </table>
 </div>
 
 </body>

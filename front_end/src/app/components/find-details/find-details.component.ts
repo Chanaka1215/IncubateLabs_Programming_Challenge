@@ -26,6 +26,9 @@ export class FindDetailsComponent implements OnInit {
     }
   }
 
+  /**
+   * wait till button group changes  recorded
+   */
   isOrderChanged() {
     setTimeout(() => {
       console.log('changed');
@@ -33,6 +36,10 @@ export class FindDetailsComponent implements OnInit {
     }, 800);
   }
 
+  /**
+   * This method  execute by ketup event
+   * each and every keyup ,will return a list
+   */
   searchHotel() {
     this._httpService.updateHotels(this.location, this.orderBy);
 
@@ -51,6 +58,10 @@ export class FindDetailsComponent implements OnInit {
       });
   }
 
+  /**
+   * display more data about a selected hotel
+   * @param i
+   */
   moreData(i: number): void {
     console.log('selected ' + this.rows[i].hotelName);
     console.log('selected ' + this.rows[i].toString());
@@ -58,6 +69,11 @@ export class FindDetailsComponent implements OnInit {
     this._router.navigate(['/home/data']);
   }
 
+  /**
+   * update a documenyt
+   * Will ssend details to the servise
+   * @param i
+   */
   update(i): void {
     console.log('update method called');
     this._global.setHotelname(this.rows[i].hotelName);

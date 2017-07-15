@@ -22,7 +22,7 @@ module.exports.userControler = function (app) {
         console.log("access the end point get user "+ req.url);
         utills.DBConnection();
         var selection  ={eMail:req.params.userName};
-        var projection ={__v:false,_id:false};
+        var projection ={__v:false,_id:false,password:false};
         userModel.User.find(selection,projection,function (err,user) {
             if(err){
                 console.log('eror occur when geting a user ==>'+ err.message );
@@ -33,6 +33,29 @@ module.exports.userControler = function (app) {
             }
         });
     });
+
+
+
+    /**
+     * The end point for get all user
+     */
+    app.get('/get/all-users',function (req,res) {
+        console.log("access the end point get all user "+ req.url);
+        utills.DBConnection();
+        var selection  ={};
+        var projection ={__v:false,_id:false,password:false};
+        userModel.User.find(selection,projection,function (err,user) {
+            if(err){
+                console.log('eror occur when geting a user ==>'+ err.message );
+                res.status(400).send({message:'internal error',status:400,content:err});
+            }else {
+                console.log('sucessfully retreved user data');
+                res.status(200).send({message:'success',status:200,content:user});
+            }
+        });
+    });
+
+
 
 
 

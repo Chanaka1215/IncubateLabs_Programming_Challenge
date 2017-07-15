@@ -35,7 +35,10 @@ export class LoginComponent implements OnInit {
   }
 
 
-
+  /**
+   * send login data to server
+   * check validity client side
+   */
   checkLogin(): void {
     const object = this.loginmodel;
     let responce: number;
@@ -72,8 +75,12 @@ export class LoginComponent implements OnInit {
   }
 
 
-
-
+  /**
+   * check the 2 password match
+   * 8 character long
+   * if yes return true
+   * @returns {boolean}
+   */
   paswordMacher(): boolean {
 
     const pass = this.regModel.password;
@@ -103,6 +110,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  /**
+   * check email is valid
+   * by RegEx (copied fron stackOverflow)
+   * @returns {boolean}
+   */
   isValidEmail(): boolean {
     const male: string = this.regModel.email;
     const EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
@@ -115,6 +127,10 @@ export class LoginComponent implements OnInit {
   }
 
 
+  /**
+   * check the enter name is valid
+   * @returns {boolean}
+   */
     isValidName(): boolean{
     const name = this.regModel.userName;
       if (name.length <= 10 && name.length >= 5) {
@@ -124,6 +140,12 @@ export class LoginComponent implements OnInit {
       }
     }
 
+
+  /**
+   * check user data localy
+   * then send to register
+   * set the response to display
+   */
   isValidUser(): void {
     if (this.paswordMacher() && this.isValidEmail() && this.isValidName()){
       const user = this.regModel;

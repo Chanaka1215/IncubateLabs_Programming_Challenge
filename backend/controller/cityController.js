@@ -30,18 +30,45 @@ module.exports.cityControler = function (app) {
         var selection  ={city:req.params.name};
         var projection ={__v:false,_id:false};
 
-        cityModel.City.find(selection,projection,function (err,user) {
+        cityModel.City.find(selection,projection,function (err,city) {
             if(err){
                 console.log('eror occur when geting a city');
                 res.status(400).send({message:'internal error',status:500,content:err});
             }else {
                 console.log('sucessfully retreved city data');
-                res.status(200).send({message:'success',status:200,content:user});
+                res.status(200).send({message:'success',status:200,content:city});
             }
         });
 
 
     });
+
+
+
+    /**
+     * this method reteve a All enterd city
+     * :name
+     */
+    app.get('/get/all-city',function (req,res) {
+        console.log('access the get method for '+req.url);
+        utills.DBConnection();
+        var selection  ={ };
+        var projection ={__v:false,_id:false};
+
+        cityModel.City.find(selection,projection,function (err,cities) {
+            if(err){
+                console.log('eror occur when geting a city');
+                res.status(200).send({message:'internal error',status:500,content:err});
+            }else {
+                console.log('sucessfully retreved city data');
+                res.status(200).send({message:'success',status:200,content:cities});
+            }
+        });
+
+    });
+
+
+
 
     /**
      * this post method is used to save new city
@@ -82,17 +109,17 @@ module.exports.cityControler = function (app) {
          utills.DBConnection();
         var selection  ={cityName:location};
         var projection ={__v:false,_id:false};
+        var data,error;
 
         cityModel.City.find(selection,projection,function (err,city) {
             if(err){
                 console.log('eror occur when geting a city');
-                //return err
-                // res.status(500).send({message:'internal error',status:500,content:err});
+                error =err;
             }else {
                 console.log('sucessfully retreved city data'+city[0]);
                 // //res.status(200).send({message:'success',status:200,content:user});
                 // return city;
-                callback(city[0]);
+                callback(error,city[0]);
             }
         });
     };

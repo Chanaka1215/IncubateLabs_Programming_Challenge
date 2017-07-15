@@ -44,6 +44,9 @@ export class EnterDetailsComponent implements OnInit {
   }
 
 
+  /**
+   * to submit new document to the server
+   */
   postData() {
     const object = this.hotelModel;
     this._httpServise.postHotelData(object)
@@ -66,6 +69,9 @@ export class EnterDetailsComponent implements OnInit {
   }
 
 
+  /**
+   * for updating a existin document
+   */
   updateData() {
     const object = this.hotelModel;
     this._httpServise.updateHotelData(object)
@@ -88,16 +94,26 @@ export class EnterDetailsComponent implements OnInit {
   }
 
 
+  /**
+   * modal visible
+   */
   show(): void {
     this.visible = true;
     setTimeout(() => this.visibleAnimate = true, 100);
   }
 
+  /**
+   * to modal hide
+   */
   hide(): void {
     this.visibleAnimate = false;
     setTimeout(() => this.visible = false, 300);
   }
 
+  /**
+   * to remove the modal by clicking container
+   * @param event
+   */
   onContainerClicked(event: MouseEvent): void {
     if ((<HTMLElement>event.target).classList.contains('modal')) {
       this.hide();
