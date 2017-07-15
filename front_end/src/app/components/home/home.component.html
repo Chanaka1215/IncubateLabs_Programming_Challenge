@@ -7,32 +7,13 @@
  * Package            : .
  *-->
 
-<!--<md-toolbar >-->
-    <!--<div class="col-md-12">-->
-      <!--<div class="col-md-2 col-sm-8 rm-mar-pad" style="display: inline-block">-->
-        <!--<button md-button><img src="/assets/img/hotels.png" height="50px" /></button>-->
-      <!--</div>-->
-      <!--<div class="col-md-2 rm-mar-pad nav-buttons">-->
-        <!--<button md-button (click)="logout()"><i class="material-icons" >account_box</i>{{loggedUser }} logout</button>-->
-      <!--</div>-->
-      <!--<div class="col-md-2 rm-mar-pad nav-buttons">-->
-        <!--<button md-button routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/home/find']"><i class="material-icons">search</i>Find a Hotel</button>-->
-      <!--</div>-->
-      <!--<div class="col-md-2 rm-mar-pad nav-buttons">-->
-        <!--<button md-button routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/home/enter']"><i class="material-icons">fiber_new</i>Enter new Hotel</button>-->
-      <!--</div>-->
-
-    <!--</div>-->
-
-<!--</md-toolbar>-->
-
 
 
 <md-toolbar color="primary">
 
-  <button md-button routerLink="/">
+  <button md-button routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/home/find']">
     <md-icon>home</md-icon>
-    {{title}}Home
+    Hotel Finder
   </button>
 
   <!-- This fills the remaining space of the current row -->
@@ -40,7 +21,7 @@
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
     <button md-button routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/home/find']"><i class="material-icons">search</i>Find Hotels </button>
     <button md-button routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/home/enter']"><i class="material-icons">fiber_new</i>Enter Hotel </button>
-    <button md-button (click)="logout()"><i class="material-icons" >account_box</i>{{loggedUser }} Logout</button>
+    <button md-button  (click)="logout()"><i class="material-icons" >account_box</i>{{ loggedUser }} => Logout</button>
 
   </div>
   <button md-button [md-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
@@ -54,5 +35,7 @@
   <button md-menu-item (click)="logout()"><i class="material-icons" >account_box</i>{{loggedUser }} Logout</button>
   <!--<button md-menu-item>Help</button>-->
 </md-menu>
+
+
 
 <router-outlet></router-outlet>
