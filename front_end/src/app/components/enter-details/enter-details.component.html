@@ -32,7 +32,7 @@
 
       <form  #hotelForm="ngForm" >
       <md-input-container style="width:100%">
-        <input mdInput style="color:black" type="text" id="hName" name="hName" required [(ngModel)]="hotelModel.hName" #hName="ngModel" placeholder="Hotel Name">
+        <input mdInput style="color:black" type="text" id="hName" name="hName" required [(ngModel)]="hotelModel.hName" #hName="ngModel" placeholder="Hotel Name"  [readonly]="isReadOnly">
       </md-input-container>
 
       <md-input-container style="width:100%">

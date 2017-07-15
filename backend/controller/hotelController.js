@@ -78,7 +78,7 @@
          var option ={
              upsert:false
          };
-         hotelModel.findOneAndUpdate(query, updateData, option, function(err, doc){
+         hotelModel.Hotels.findOneAndUpdate(query, updateData, option, function(err, doc){
              if (err){
                  console.log('error  when updating'+err.message)
                  res.status(400).send({message:'did not match ',status:400,content: err });

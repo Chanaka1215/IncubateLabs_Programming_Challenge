@@ -17,6 +17,7 @@ export class EnterDetailsComponent implements OnInit {
   public visible = false;
   public visibleAnimate = false;
   public updateMode = false;
+  public isReadOnly = false;
 
 
   constructor(private _httpServise: HttpRequestService, private _global: GlobalVariableService, private _router:Router) {
@@ -32,6 +33,7 @@ export class EnterDetailsComponent implements OnInit {
 
       if(this._global.getupdateObject()){
         this.updateMode = true;
+        this.isReadOnly = true;
         var obj = this._global.getupdateObject();
         console.log(obj);
         this.hotelModel.hName =obj.hotelName;
