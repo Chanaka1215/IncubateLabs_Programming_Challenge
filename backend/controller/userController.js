@@ -76,6 +76,7 @@ module.exports.userControler = function (app) {
         newUser.save(function (err) {
             if(err){
                 if(err.code == 11000){   // if found duplicate entry
+                    console.log('error field'+err.message);
                     res.status(200).send({message:err.message,status: 202, content:''});
                 }else {
                     console.log('error occur**** '+err.message+"****"+err.code +"**"+err.collection)
