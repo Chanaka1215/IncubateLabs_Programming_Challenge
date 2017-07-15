@@ -45,10 +45,6 @@ module.exports.userControler = function (app) {
             eMail    :req.body.email,
             regDate  :new Date().toString()
         });
-
-        /**
-         * this method will save the model into database
-         */
         console.log('rea');
         newUser.save(function (err) {
             if(err){
@@ -84,7 +80,7 @@ module.exports.userControler = function (app) {
             if(err){
                 mess=500;
                 console.log('eror occur when geting a user ***' + err.message );
-                res.status(500).send({message:'internal error',status:mess,content:err});
+                res.status(400).send({message:'internal error',status:mess,content:err});
             }else {
                 if(users.length == 0){
                     mess = 400;
@@ -97,7 +93,6 @@ module.exports.userControler = function (app) {
                 res.status(200).send({message:'success',status:mess,content:''});
             }
         });
-
 
 
     });
@@ -121,6 +116,35 @@ module.exports.userControler = function (app) {
 
     exports.FindaUserByUserName = findaUserByUserName;
 
+
+    // /**
+    //  * This method save the user object
+    //  * @param userObject
+    //  * @param callback
+    //  */
+    // exports.addNewUser= function(userName,callback){
+    //     console.log(" FindaUserByUserName mehod accesed");
+    //     var newUser = userModel.User({
+    //         userName :req.body.userName,
+    //         password :req.body.password,
+    //         eMail    :req.body.email,
+    //         regDate  :new Date().toString()
+    //     });
+    //     utills.DBConnection();
+    //     var error ;
+    //     var message;
+    //     userObject.save(function (err) {
+    //         if(err){
+    //             console.log('error occur while saving User ==> '+err.message);
+    //             error =err;
+    //         }else {
+    //             console.log('Sucesfully saved new User ');
+    //         }
+    //         callback(err,message);
+    //     });
+    //
+    //
+    // };
 
 
 

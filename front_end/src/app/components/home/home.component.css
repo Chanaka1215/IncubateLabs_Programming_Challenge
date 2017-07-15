@@ -1,0 +1,38 @@
+/*
+ * Created by         : Chanaka Fernando.
+ * Date               : Sat, 7/14/2017 .
+ * Email              : nuwan.c.fernando@gmail.com.
+ * LinkedIn           : https://www.linkedin.com/in/n-chanaka-fernando
+ * Belongs to Project : front_end.
+ * Package            : .
+ */
+
+
+.nav-buttons{
+  float:right;
+  display:inline;
+  margin-right:0px;
+  width: 100%;
+  clear:left;
+}
+.nav-buttons button{
+  width: 100%;
+  height: 50px;
+}
+
+
+.rm-mar-pad{
+  margin: 0%;
+  padding: 0%;
+}
+
+
+.active{
+  background-color: lightgray;
+  color: black;
+}
+
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}

@@ -15,7 +15,7 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
   public loggedUser: string;
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  logout(){
+  logout():void{
     this._global.setSession(false) ;
     console.log( ' logged out');
       this._router.navigate(['']);

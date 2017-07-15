@@ -7,44 +7,13 @@
  * Package            : .
  */
 
-.rm-mar-pad{
-  margin: 0%;
-  padding: 0%;
-}
+
 
 .navigation{
   background: url("/assets/img/back.jpg") no-repeat;
   margin: 0%;
   padding: 0%;
 }
-.title {
-  text-align: center;
-  margin-bottom: 0px;
-}
-
-.title h3 {
-  font-size: 42px;
-  font-weight: 500;
-  color: #ffffff;
-  position: relative;
-  padding-top: 10px;
-
-}
-.title h3 span {
-  color: #1e90ff;
-  font-weight: 200;
-}
-.title h3:after {
-  background: #1e90ff;
-  width: 80px;
-  height: 2px;
-  position: absolute;
-  left: 50%;
-  bottom: -20px;
-  content: '';
-  margin-left: -40px;
-}
-
 
 
 .form{
@@ -75,7 +44,5 @@
 
 
 .fill-remaining-space {
-  /*This fills the remaining space, by using flexbox.
- Every toolbar row uses a flexbox row layout. */
   flex: 1 1 auto;
 }

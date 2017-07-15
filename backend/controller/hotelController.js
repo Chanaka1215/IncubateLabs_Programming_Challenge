@@ -93,8 +93,6 @@
 
 
 
-
-
      /**
       * this method reteve fyull details
       */
@@ -160,13 +158,6 @@
 
                      res.status(200).send({message:'success',status:200,content:result});
                  });
-
-
-
-
-
-
-
 
 
              }

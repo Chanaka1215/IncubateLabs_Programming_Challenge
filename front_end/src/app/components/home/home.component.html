@@ -15,8 +15,6 @@
     <md-icon>home</md-icon>
     Hotel Finder
   </button>
-
-  <!-- This fills the remaining space of the current row -->
   <span class="fill-remaining-space"></span>
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
     <button md-button routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/home/find']"><i class="material-icons">search</i>Find Hotels </button>
@@ -30,10 +28,9 @@
 
 </md-toolbar>
 <md-menu x-position="before" #menu="mdMenu">
-  <button md-menu-item routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/home/find']">Find Hotels</button>
-  <button md-menu-item routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/home/enter']"><i class="material-icons">fiber_new</i>Enter Hotel</button>
-  <button md-menu-item (click)="logout()"><i class="material-icons" >account_box</i>{{loggedUser }} Logout</button>
-  <!--<button md-menu-item>Help</button>-->
+  <button md-menu-item routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/home/find']">Find </button>
+  <button md-menu-item routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/home/enter']">Enter </button>
+  <button md-menu-item (click)="logout()">{{loggedUser }} Logout</button>
 </md-menu>
 
 
