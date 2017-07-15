@@ -10,6 +10,8 @@
 var mongoose = require('mongoose');
 var schema  = mongoose.Schema;
 
+
+//the city model to store the city object
 var city = new schema({
     zip         :{type:String,require:true,unique:true},
     cityName    :{type:String,require:true,unique:true},

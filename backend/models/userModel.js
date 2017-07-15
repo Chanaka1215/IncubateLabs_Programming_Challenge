@@ -22,26 +22,26 @@ exports.User = User;
 
 
 
-/**
- * this method will pass a user  by user name
- * @param enterdBy
- * @param callback
- * @constructor
- */
-exports.FindaUserByUserName = function(enterdBy,callback){
-    console.log(" FindaUserByUserName mehod accesed");
-    utills.DBConnection();
-    var selection  ={userName:enterdBy};
-    var projection ={__v:false,_id:false,password:false};
-
-    User.findOne(selection,projection,function (err,user) {  //change find => findOne
-        if(err){
-            console.log('eror occur when geting a user data');
-        }else {
-            console.log('sucessfully retreved user data and finished ' + user[0]);
-            callback(user[0]);
-        }
-    });
-};
+// /**
+//  * this method will pass a user  by user name
+//  * @param enterdBy
+//  * @param callback
+//  * @constructor
+//  */
+// exports.FindaUserByUserName = function(enterdBy,callback){
+//     console.log(" FindaUserByUserName mehod accesed");
+//     utills.DBConnection();
+//     var selection  ={userName:enterdBy};
+//     var projection ={__v:false,_id:false,password:false};
+//
+//     User.findOne(selection,projection,function (err,user) {  //change find => findOne
+//         if(err){
+//             console.log('eror occur when geting a user data');
+//         }else {
+//             console.log('sucessfully retreved user data and finished ' + user[0]);
+//             callback(user[0]);
+//         }
+//     });
+// };
 
 

@@ -16,9 +16,10 @@ export class FindDetailsComponent implements OnInit {
   public totalHotels = 0;
   public selectedIndex: number;
   public hotel : string;
-  public orderBy:string;
+  public orderBy:string= '1';
 
   constructor (private _httpService: HttpRequestService, private _global: GlobalVariableService, private _router: Router) {
+    console.log('0000000000000000'+this.orderBy);
   }
   ngOnInit() {
     if (this._global.getSession() === false) {
@@ -26,10 +27,17 @@ export class FindDetailsComponent implements OnInit {
     }
   }
 
-  searchHotel() {
-    this._httpService.updateHotels(this.location);
+  isOrderChanged(){
+    setTimeout(() => {
+      console.log('changed');
+      this.searchHotel();
+    }, 800);
+  }
 
-    this._httpService.getHotel(this.orderBy)
+  searchHotel() {
+    this._httpService.updateHotels(this.location, this.orderBy);
+
+    this._httpService.getHotel()
       .subscribe(list => {
         this.rows = list.content;
         this.totalHotels = this.rows.length;
@@ -38,7 +46,7 @@ export class FindDetailsComponent implements OnInit {
         if (this.rows.length !== 0) {
           this.hotelsAvailabla = true;
           this.totalHotels = this.rows.length;
-          console.log('hotels are avilable');
+          console.log('hotels are avilable' + '00000');
         }
 
     });

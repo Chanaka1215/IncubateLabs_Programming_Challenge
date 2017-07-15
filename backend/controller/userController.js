@@ -10,29 +10,32 @@
 var utills = require('../utills');
 var userModel = require('../models/userModel');
 
+
+// main controller module for User Model
 module.exports.userControler = function (app) {
 
-    /**
-     * this method reteve one user
-     */
-    app.get('/get/user/:email',function (req,res) {
-        console.log("kkkkkk");
-        utills.DBConnection();
-        var selection  ={eMail:req.params.email};
-        var projection ={__v:false,_id:false};
 
+    /**
+     * The end point for get user by e user name
+     */
+    app.get('/get/user/:userName',function (req,res) {
+        console.log("access the end point get user "+ req.url);
+        utills.DBConnection();
+        var selection  ={eMail:req.params.userName};
+        var projection ={__v:false,_id:false};
         userModel.User.find(selection,projection,function (err,user) {
             if(err){
-                console.log('eror occur when geting a user');
-                res.status(500).send({message:'internal error',status:500,content:err});
+                console.log('eror occur when geting a user ==>' err.message );
+                res.status(400).send({message:'internal error',status:400,content:err});
             }else {
                 console.log('sucessfully retreved user data');
                 res.status(200).send({message:'success',status:200,content:user});
             }
         });
-
     });
 
+
+    
     /**
      * assign new user data to the user model
      */

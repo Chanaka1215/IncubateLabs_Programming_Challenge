@@ -11,10 +11,18 @@
  var cityController =require('./cityController');
  var userController = require('./userController');
 
- module.exports.hotelControler = function (app) {
+
+/**
+ * the hotel controller for the hotel model
+ * @param app
+ */
+module.exports.hotelControler = function (app) {
 
      /**
       * this method reteve data as a list
+      * The end point for get hotel list by params ciity and orderBy
+      * city => string
+      * orderBy => number (1 -1)
       */
      app.get('/get/hotels/:city/:orderBy',function (req,res) {
          utills.DBConnection();
@@ -37,8 +45,11 @@
          
      });
 
+
+
+
      /**
-      * assign new data to the model
+      * The end point for save  new hotel
       */
      app.post('/post/hotel',function (req,res) {
          console.log(req.body)
@@ -51,9 +62,7 @@
              hDesc     :req.body.hDesc
          });
 
-         /**
-          * this method will save the model into database
-          */
+         //save the new Hotel object using hotel model
          newHotel.save(function (err) {
              utills.DBConnection();
              if(err){
@@ -68,11 +77,14 @@
      });
 
 
+     /**
+      * post method for end point for update a hotel
+      */
      app.post('/post/update-hotel',function (req,res) {
          console.log(req.body)
          utills.DBConnection();
 
-         var query = { hotelName:req.body.hName};
+         var selection = { hotelName:req.body.hName};
          var updateData = {
              address    :req.body.hAddress,
              city       :req.body.hLocation.toUpperCase(),
@@ -82,7 +94,8 @@
          var option ={
              upsert:false
          };
-         hotelModel.Hotels.findOneAndUpdate(query, updateData, option, function(err, doc){
+         //to find the hotel then update
+         hotelModel.Hotels.findOneAndUpdate(selection, updateData, option, function(err, doc){
              if (err){
                  console.log('error  when updating'+err.message)
                  res.status(400).send({message:'did not match ',status:400,content: err });
