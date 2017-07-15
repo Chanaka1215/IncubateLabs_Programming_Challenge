@@ -161,5 +161,5 @@ module.exports.userControler = function (app) {
     // };
 
 
-    
+
 };
