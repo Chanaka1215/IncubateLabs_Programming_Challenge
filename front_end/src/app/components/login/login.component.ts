@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 import {LoginModel, RegisterModel} from './login.models';
 import {HttpRequestService} from '../../service/http-request.service';
 import {GlobalVariableService} from '../../service/global-variable.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 
 
@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
   public loginmodel = new LoginModel('', '');
   public regModel = new RegisterModel('', '', '', '');
   public passMatch = 0;
-  public loginResponceMsg :string;
-  public regResponceMsg :string = null;
+  public loginResponceMsg: string;
+  public regResponceMsg: string = null;
 
   constructor(private _httpService: HttpRequestService, private _global: GlobalVariableService, private _router: Router) {
   }
@@ -36,22 +36,22 @@ export class LoginComponent implements OnInit {
 
 
 
-  checkLogin():void {
-    var object = this.loginmodel;
-    var responce: number;
-    if(this.loginmodel.name.length >= 5 && this.loginmodel.name.length <= 10 ){
-      if(this.loginmodel.password.length === 8 ){
+  checkLogin(): void {
+    const object = this.loginmodel;
+    let responce: number;
+    if (this.loginmodel.name.length >= 5 && this.loginmodel.name.length <= 10 ){
+      if (this.loginmodel.password.length === 8 ){
         this._httpService.userLogin(object)
           .subscribe(
             data => responce = data.status,
             error => {
               alert(error.message);
-              this.loginResponceMsg= 'Error occured when connecting to server';
+              this.loginResponceMsg = 'Error occured when connecting to server';
             },
             () => {
               console.log('success1 ');
-              if(responce === 200){
-                this.loginResponceMsg= 'Successfully loged in';
+              if (responce === 200){
+                this.loginResponceMsg = 'Successfully loged in';
                 this._global.setUsername(this.loginmodel.name);
                 this._global.setSession(true);
                 this._router.navigate(['/home/find']);
@@ -104,10 +104,10 @@ export class LoginComponent implements OnInit {
   }
 
   isValidEmail(): boolean {
-    var male: string = this.regModel.email;
-    let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+    const male: string = this.regModel.email;
+    const EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
 
-    if (male != "" && (male.length <= 5 || !EMAIL_REGEXP.test(male))) {
+    if (male != '' && (male.length <= 5 || !EMAIL_REGEXP.test(male))) {
       return false;
     }
 
@@ -115,9 +115,9 @@ export class LoginComponent implements OnInit {
   }
 
 
-    isValidName():boolean{
-    var name = this.regModel.userName;
-      if (name.length <= 10 && name.length >=5) {
+    isValidName(): boolean{
+    const name = this.regModel.userName;
+      if (name.length <= 10 && name.length >= 5) {
         return true;
       } else {
         return false;
@@ -130,7 +130,7 @@ export class LoginComponent implements OnInit {
       let responce : number;
       this._httpService.registerNewUser(user)
         .subscribe(
-          data => {responce = data.status;},
+          data => {responce = data.status; },
           error => {
             this.regResponceMsg = 'Error occure whith connection';
             console.log('Error occure whith connection');
@@ -139,7 +139,7 @@ export class LoginComponent implements OnInit {
             },
           () => {
             console.log('sucsess');
-            this.passMatch=0;
+            this.passMatch = 0;
             if (responce === 200){
               this.regResponceMsg =  'User registration succsesfull';
             }else if (responce === 202){
@@ -150,11 +150,11 @@ export class LoginComponent implements OnInit {
           }
         );
     }else {
-      if(!this.isValidName()){
+      if (!this.isValidName()){
         this.regResponceMsg =  'Check the Username it must be between 5 - 10 characters';
-      }else if(!this.isValidEmail()){
+      }else if (!this.isValidEmail()){
         this.regResponceMsg = 'check your email it seems net valid';
-      }else if(this.paswordMacher()){
+      }else if (this.paswordMacher()){
         this.regResponceMsg = 'Check your password it must have 8 characters';
       } else {
         this.regResponceMsg =  null;

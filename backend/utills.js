@@ -11,6 +11,11 @@
 var utills = require('./utills');
 var config = require('./app-config.json');
 
+
+/**
+ * the DB connecter method
+ * @returns {boolean}
+ */
 function dbConnection() {
 
     // 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting (soucre) My credentials were invalid, it was giving 4, which I can't find in officials docs or anywhere else

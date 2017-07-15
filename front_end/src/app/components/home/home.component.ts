@@ -19,7 +19,6 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
   public loggedUser: string;
-  public title = 'Hello';
 
   constructor(private _global: GlobalVariableService, private _router:Router ) { }
 

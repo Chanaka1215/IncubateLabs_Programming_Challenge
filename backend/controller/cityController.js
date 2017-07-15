@@ -33,7 +33,7 @@ module.exports.cityControler = function (app) {
         cityModel.City.find(selection,projection,function (err,user) {
             if(err){
                 console.log('eror occur when geting a city');
-                res.status(500).send({message:'internal error',status:500,content:err});
+                res.status(400).send({message:'internal error',status:500,content:err});
             }else {
                 console.log('sucessfully retreved city data');
                 res.status(200).send({message:'success',status:200,content:user});
@@ -62,7 +62,7 @@ module.exports.cityControler = function (app) {
         newCity.save(function (err) {
             if(err){
                 console.log('error occur'+err.message)
-                res.status(500).send({message:err.message,status:500,content:''})
+                res.status(400).send({message:'error',status:500,content:err})
             }else {
                 console.log('Sucesfully saved new city');
                 res.status(200).send({message:'successfully  saved city',status:200,content:''})
@@ -72,6 +72,12 @@ module.exports.cityControler = function (app) {
     });
 
 
+    /**
+     * to find a city by its name
+     * city name is unique
+     * @param location
+     * @param callback
+     */
     var findaCityByName= function(location,callback){
          utills.DBConnection();
         var selection  ={cityName:location};

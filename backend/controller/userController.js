@@ -25,7 +25,7 @@ module.exports.userControler = function (app) {
         var projection ={__v:false,_id:false};
         userModel.User.find(selection,projection,function (err,user) {
             if(err){
-                console.log('eror occur when geting a user ==>' err.message );
+                console.log('eror occur when geting a user ==>'+ err.message );
                 res.status(400).send({message:'internal error',status:400,content:err});
             }else {
                 console.log('sucessfully retreved user data');
@@ -35,11 +35,12 @@ module.exports.userControler = function (app) {
     });
 
 
-    
+
     /**
-     * assign new user data to the user model
+     * The end point to assign new user data to the user model
      */
     app.post('/post/register',function (req,res) {
+        console.log("Access the end point for post user  url "+ req.url);
         utills.DBConnection();
         console.log(req.body);
         var newUser = userModel.User({
@@ -51,11 +52,11 @@ module.exports.userControler = function (app) {
         console.log('rea');
         newUser.save(function (err) {
             if(err){
-                if(err.code == 11000){
+                if(err.code == 11000){   // if found duplicate entry
                     res.status(200).send({message:err.message,status: 202, content:''});
                 }else {
                     console.log('error occur**** '+err.message+"****"+err.code +"**"+err.collection)
-                    res.status(500).send({message:err.message,status:500,content:''})
+                    res.status(400).send({message:err.message,status:500,content:''})
                 }
 
             }else {
@@ -67,14 +68,19 @@ module.exports.userControler = function (app) {
     });
 
 
+    /**
+     * The end point for the user Login
+     * login daa object is come as POST Object
+     */
     app.post('/post/login',function (req,res) {
+        console.log("Access the end point for login==> url  "+ req.url);
         utills.DBConnection();
         console.log(req.body);
         var selection  ={
             userName:req.body.name,
             password:req.body.password
         };
-        var projection ={__v:false,_id:false};
+        var projection ={__v:false,_id:false,password:false};
 
         userModel.User.find(selection,projection,function (err,users) {
             var mess ;
@@ -85,9 +91,9 @@ module.exports.userControler = function (app) {
                 console.log('eror occur when geting a user ***' + err.message );
                 res.status(400).send({message:'internal error',status:mess,content:err});
             }else {
-                if(users.length == 0){
+                if(users.length == 0){  // no user with that u name
                     mess = 400;
-                }else if(users.length ==1){
+                }else if(users.length ==1){  // user exist
                     mess = 200;
                 } else {
                     mess = 500;
@@ -101,8 +107,13 @@ module.exports.userControler = function (app) {
     });
 
 
+    /**
+     * the method for get user object from data base pasing user name
+     * @param enterdBy
+     * @param callback
+     */
     var findaUserByUserName= function(enterdBy,callback){
-        console.log("User controller accesed");
+        console.log("findaUserByUserName method accesed");
         utills.DBConnection();
         var selection  ={userName:enterdBy};
         var projection ={__v:false,_id:false,password:false};
@@ -150,8 +161,5 @@ module.exports.userControler = function (app) {
     // };
 
 
-
-
-
-
+    
 };

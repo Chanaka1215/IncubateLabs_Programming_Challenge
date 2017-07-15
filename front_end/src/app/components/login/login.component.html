@@ -9,57 +9,70 @@
 
 
 <div class="login-page">
-<div class="col-md-4 col-md-offset-4 login-box">
-<md-tab-group  md-dynamic-height="true" >
-  <md-tab  label="Login">
-    <form  #loginForm="ngForm">
-      <br/>
-      <md-input-container style="width:100%">
-        <input mdInput style="color:black" type="text" id="userName" name="userName" required [(ngModel)]="loginmodel.name" #userName="ngModel" placeholder="User Name">
-      </md-input-container>
+  <div class="col-md-4 col-md-offset-4 login-box">
+    <md-tab-group md-dynamic-height="true">
+      <md-tab label="Login">
+        <form #loginForm="ngForm">
+          <br/>
+          <md-input-container style="width:100%">
+            <input mdInput style="color:black" type="text" name="userName" required [(ngModel)]="loginmodel.name"
+                   #userName="ngModel" placeholder="User Name">
+          </md-input-container>
 
-      <md-input-container style="width:100%">
-        <input mdInput style="color:black" type="password" id="password" name="password" required [(ngModel)]="loginmodel.password" #password="ngModel" placeholder="Password">
-      </md-input-container>
-      <div *ngIf="loginResponceMsg != null" class="alert alert-info"  style="height: 50px;font-size: 16px">{{loginResponceMsg}}</div>
+          <md-input-container style="width:100%">
+            <input mdInput style="color:black" type="password" name="password" required
+                   [(ngModel)]="loginmodel.password" #password="ngModel" placeholder="Password">
+          </md-input-container>
+          <div *ngIf="loginResponceMsg != null" class="alert alert-info" style="height: 50px;font-size: 16px">
+            {{loginResponceMsg}}
+          </div>
 
-      <button md-raised-button color="primary"style="width:100%; margin-top: 15%; margin-bottom: 10px" (click)="checkLogin()">Login</button>
-    </form>
+          <button md-raised-button color="primary" style="width:100%; margin-top: 15%; margin-bottom: 10px"
+                  (click)="checkLogin()">Login
+          </button>
+        </form>
 
-  </md-tab>
+      </md-tab>
 
-  <md-tab label="Register" >
-    <form class="form-well" #regForm="ngForm">
-      <br/>
-      <md-input-container style="width:100%" >
-        <input mdInput  style="color:black" type="text" id="Name" name="name" required [(ngModel)]="regModel.userName" #name="ngModel" placeholder="User Name">
-      </md-input-container>
-      <!--<md-input-container style="width:100%">-->
-        <!--<input mdInput style="color:black" type="text" id="phone" name="mobile" required [(ngModel)]="regModel.mobile" #mobile="ngModel" placeholder="Mobile">-->
-      <!--</md-input-container>-->
-      <md-input-container style="width:100%">
-        <input mdInput style="color:black" type="email" id="email" name="email" required [(ngModel)]="regModel.email" #email="ngModel" placeholder="Email">
-      </md-input-container>
-      <md-input-container style="width:100%">
-        <input mdInput style="color:black" type="password" id="pass" name="pass" required [(ngModel)]="regModel.password" #pass="ngModel" placeholder="Password" (keyup)="paswordMacher()">
-      </md-input-container>
+      <md-tab label="Register">
+        <form class="form-well" #regForm="ngForm">
+          <br/>
+          <md-input-container style="width:100%">
+            <input mdInput style="color:black" type="text" id="Name" name="name" required
+                   [(ngModel)]="regModel.userName" #name="ngModel" placeholder="User Name">
+          </md-input-container>
+          <!--<md-input-container style="width:100%">-->
+          <!--<input mdInput style="color:black" type="text" id="phone" name="mobile" required [(ngModel)]="regModel.mobile" #mobile="ngModel" placeholder="Mobile">-->
+          <!--</md-input-container>-->
+          <md-input-container style="width:100%">
+            <input mdInput style="color:black" type="email" id="email" name="email" required
+                   [(ngModel)]="regModel.email" #email="ngModel" placeholder="Email">
+          </md-input-container>
+          <md-input-container style="width:100%">
+            <input mdInput style="color:black" type="password" id="pass" name="pass" required
+                   [(ngModel)]="regModel.password" #pass="ngModel" placeholder="Password" (keyup)="paswordMacher()">
+          </md-input-container>
 
-      <md-input-container style="width:100%">
-        <input mdInput style="color:black ; " type="password" id="repass" name="repass" required [(ngModel)]="regModel.rePassword" #repass="ngModel" placeholder="ReEnter Password" (keyup)="paswordMacher()">
-      </md-input-container>
-        <div *ngIf="passMatch == 2" class="alert alert-success" role="alert">match passwords</div>
-        <div *ngIf="passMatch == 1" class="alert alert-danger" role="alert">Does not match passwords</div>
-      <div *ngIf="!regResponceMsg != null" class="alert alert-info" role="alert">{{regResponceMsg}}</div>
-
-
-      <br/>
-      <button md-raised-button color="primary"style="width:100%; margin-top: 2%; margin-bottom: 10px" (click)="isValidUser()">Register</button>
-
-    </form>
-
-  </md-tab>
-</md-tab-group>
+          <md-input-container style="width:100%">
+            <input mdInput style="color:black ; " type="password" id="repass" name="repass" required
+                   [(ngModel)]="regModel.rePassword" #repass="ngModel" placeholder="ReEnter Password"
+                   (keyup)="paswordMacher()">
+          </md-input-container>
+          <div *ngIf="passMatch == 2" class="alert alert-success" role="alert">match passwords</div>
+          <div *ngIf="passMatch == 1" class="alert alert-danger" role="alert">Does not match passwords</div>
+          <div *ngIf="!regResponceMsg" class="alert alert-info" role="alert">{{regResponceMsg}}</div>
 
 
-</div>
+          <br/>
+          <button md-raised-button color="primary" style="width:100%; margin-top: 2%; margin-bottom: 10px"
+                  (click)="isValidUser()">Register
+          </button>
+
+        </form>
+
+      </md-tab>
+    </md-tab-group>
+
+
+  </div>
 </div>

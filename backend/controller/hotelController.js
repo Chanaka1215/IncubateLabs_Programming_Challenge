@@ -25,6 +25,7 @@ module.exports.hotelControler = function (app) {
       * orderBy => number (1 -1)
       */
      app.get('/get/hotels/:city/:orderBy',function (req,res) {
+         console.log("access the end point hotel ==> "+ req.url);
          utills.DBConnection();
          var sortOder = req.params.orderBy;
          var selection  ={city:req.params.city};
@@ -34,15 +35,13 @@ module.exports.hotelControler = function (app) {
          console.log(req.params.city+' hotel list is sorted ' + req.params.orderBy);
          hotelModel.Hotels.find(selection,projection,option,function (err,hotelList) {
              if(err){
-                 console.log('eror occur when geting hotel list');
+                 console.log('eror occur when geting hotel list  ==> '+err.message );
                  res.status(200).send({message:'internal error',status:500,content:err});
              }else {
                  console.log('sucessfully retreved data');
                  res.status(200).send({message:'success',status:200,content:hotelList});
              }
          });
-
-         
      });
 
 
@@ -52,6 +51,7 @@ module.exports.hotelControler = function (app) {
       * The end point for save  new hotel
       */
      app.post('/post/hotel',function (req,res) {
+         console.log("access the end point for post a hotel ==> "+ req.url);
          console.log(req.body)
          utills.DBConnection();
          var newHotel = hotelModel.Hotels({
@@ -66,7 +66,7 @@ module.exports.hotelControler = function (app) {
          newHotel.save(function (err) {
              utills.DBConnection();
              if(err){
-                 console.log('error occur'+err.message)
+                 console.log('error occur when saving new hotel data ==> '+err.message)
                  res.status(500).send({message:err.message,status:500,content:''})
              }else {
                  console.log('Sucesfully saved new hotel');
@@ -81,7 +81,7 @@ module.exports.hotelControler = function (app) {
       * post method for end point for update a hotel
       */
      app.post('/post/update-hotel',function (req,res) {
-         console.log(req.body)
+         console.log("access the end point for update hotel ==> "+ req.url);
          utills.DBConnection();
 
          var selection = { hotelName:req.body.hName};
@@ -111,12 +111,13 @@ module.exports.hotelControler = function (app) {
 
 
      /**
-      * this method reteve fyull details
+      * this method reteve fyull details related to the hotel
+      * hotel name as a parameter
       */
      app.get('/get/hotels-name/:hotel',function (req,res) {
-         console.log("accesss to the method");
+         console.log("Access the end point for get hotel by name ==> "+ req.url);
          utills.DBConnection();
-         var result ={
+         var result ={  // response object created
              hName:'',
              hAddress:'',
              hDesc :'',
@@ -133,8 +134,6 @@ module.exports.hotelControler = function (app) {
          console.log("parameres"+ req.params.hotel);
 
          hotelModel.Hotels.find(selection,projection,function (err,data) {
-
-             console.log("hotel data object"+ data);
              if(err){
                  res.status(400).send({message:'error',status:400,content:''});
              }
@@ -146,45 +145,33 @@ module.exports.hotelControler = function (app) {
                  result.hEnterBy = data[0].enterBy;
 
 
-                 console.log(";;;;;"+data[0].enterBy)
+                 //get a user document by pasing usename
                  userController.FindaUserByUserName(data[0].enterBy,function (user) {
-                     console.log('user object enter data[0].enterBy '+data[0].enterBy);
-                     console.log('user object '+user);
+                     console.log('get user data by  '+data[0].enterBy);
                      if(user){
-                         console.log(user.eMail);
                          result.hEnterByE=user.eMail;
-                         console.log('result . hEnterbyE' +result.hEnterByE);
                      }else {
                          console.log('error ocuer while retreving data from usr collection');
                      }
-
-
-
                  });
 
+                 //get a city object from database pasing city name
                  cityController.FindCityByName(data[0].city,function (city) {
                      console.log('result city '+city);
                      if(city){
-                         console.log(hZip =city.zip+"   **  "+ city.district);
                          result.hZip =city.zip;
                          result.hDist=city.district;
                          result.hPro=city.province;
                      }else {
                          console.log('error ocuer while retreving data from city collection')
                      }
+
+                     // send the result object as  ia http
                      res.status(200).send({message:'success',status:200,content:result});
                  });
-
-
              }
          });
-
-
-
-
      });
-
-
 
      
  };

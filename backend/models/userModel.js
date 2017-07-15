@@ -10,6 +10,7 @@
 var mongoose = require('mongoose');
 var schema  = mongoose.Schema;
 
+//the user model to store the new user  object
 var user = new schema({
     userName :{type:String,require:true,unique:true},
     password :{type:String,require:true},

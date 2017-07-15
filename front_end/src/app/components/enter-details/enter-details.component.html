@@ -1,43 +1,50 @@
-
-    <div class="navigation">
-      <div class="title">
-        <h3>Enter new <span>Hotel</span></h3>
-        <br/>
-      </div>
-    </div>
-
-
-    <div (click)="onContainerClicked($event)" class="modal fade" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
-         [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
-
-      <div class="modal-dialog" >
-        <div class="alert alert-success ">
-            Well done! Your submision was sucessful.
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col-md-12  form " style="padding-bottom: 40px">
-
-      <form   #hotelForm="ngForm"  >
-      <md-input-container style="width:100%">
-        <input mdInput style="color:black" type="text" id="hName" name="hName" required [(ngModel)]="hotelModel.hName" #hName="ngModel" placeholder="Hotel Name"  [readonly]="isReadOnly">
-      </md-input-container>
-
-      <md-input-container style="width:100%">
-        <input mdInput style="color:black" type="text" id="hAddress" name="hAddress" required [(ngModel)]="hotelModel.hAddress" #hAddress="ngModel" placeholder="Hotel Address">
-      </md-input-container>
-      <md-input-container style="width:100%">
-        <input mdInput style="color:black" type="text" id="hLocation" name="hLocation" required [(ngModel)]="hotelModel.hLocation" #hLocation="ngModel" placeholder="City ">
-      </md-input-container>
-        <md-input-container style="width:100%">
-          <input mdInput style="color:black" type="text" id="hDesc" name="hDesc" required [(ngModel)]="hotelModel.hDesc" #hDesc="ngModel" placeholder="Description ">
-        </md-input-container>
-        <button *ngIf="!updateMode"  md-raised-button color="primary" style="width:100%; margin-top: 5%; margin-bottom: 20px" type="submit"   (click)="postData(); hotelForm.resetForm()" >Submit Data</button>
-        <button *ngIf="updateMode" md-raised-button color="primary" style="width:100%; margin-top: 5%; margin-bottom: 20px" type="submit" (click)="updateData();; hotelForm.resetForm()">Update the Record </button>
-    </form>
+<div class="navigation">
+  <div class="title">
+    <h3>Enter new <span>Hotel</span></h3>
+    <br/>
   </div>
+</div>
+
+
+<div (click)="onContainerClicked($event)" class="modal fade" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
+     [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
+
+  <div class="modal-dialog">
+    <div class="alert alert-success ">
+      Well done! Your submision was sucessful.
+    </div>
+  </div>
+</div>
+
+
+<div class="col-md-12  form " style="padding-bottom: 40px">
+
+  <form #hotelForm="ngForm">
+    <md-input-container style="width:100%">
+      <input mdInput style="color:black" type="text" id="hName" name="hName" required [(ngModel)]="hotelModel.hName"
+             #hName="ngModel" placeholder="Hotel Name" [readonly]="isReadOnly">
+    </md-input-container>
+
+    <md-input-container style="width:100%">
+      <input mdInput style="color:black" type="text" id="hAddress" name="hAddress" required
+             [(ngModel)]="hotelModel.hAddress" #hAddress="ngModel" placeholder="Hotel Address">
+    </md-input-container>
+    <md-input-container style="width:100%">
+      <input mdInput style="color:black" type="text" id="hLocation" name="hLocation" required
+             [(ngModel)]="hotelModel.hLocation" #hLocation="ngModel" placeholder="City ">
+    </md-input-container>
+    <md-input-container style="width:100%">
+      <input mdInput style="color:black" type="text" id="hDesc" name="hDesc" required [(ngModel)]="hotelModel.hDesc"
+             #hDesc="ngModel" placeholder="Description ">
+    </md-input-container>
+    <button *ngIf="!updateMode" md-raised-button color="primary" style="width:100%; margin-top: 5%; margin-bottom: 20px"
+            type="submit" (click)="postData(); hotelForm.resetForm()">Submit Data
+    </button>
+    <button *ngIf="updateMode" md-raised-button color="primary" style="width:100%; margin-top: 5%; margin-bottom: 20px"
+            type="submit" (click)="updateData();; hotelForm.resetForm()">Update the Record
+    </button>
+  </form>
+</div>
 
 
 

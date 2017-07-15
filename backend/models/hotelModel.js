@@ -10,6 +10,7 @@
 var mongoose = require('mongoose');
 var schema   = mongoose.Schema;
 
+//the hotel model to store the new hotel object
 var hotel = new schema({
     hotelName  :{type:String,require:true,unique:true},
     address    :{type:String,require:true},

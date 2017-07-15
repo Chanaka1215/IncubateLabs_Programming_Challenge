@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpRequestService} from '../../service/http-request.service';
 import {GlobalVariableService} from '../../service/global-variable.service';
 import {Router} from '@angular/router';
@@ -14,20 +14,19 @@ export class FindDetailsComponent implements OnInit {
   public rows: any;
   public hotelsAvailabla = false;
   public totalHotels = 0;
-  public selectedIndex: number;
-  public hotel : string;
-  public orderBy:string= '1';
+  public orderBy: string;
 
-  constructor (private _httpService: HttpRequestService, private _global: GlobalVariableService, private _router: Router) {
-    console.log('0000000000000000'+this.orderBy);
+  constructor(private _httpService: HttpRequestService, private _global: GlobalVariableService, private _router: Router) {
+    this.orderBy = '1';
   }
+
   ngOnInit() {
     if (this._global.getSession() === false) {
       this._router.navigate(['']);
     }
   }
 
-  isOrderChanged(){
+  isOrderChanged() {
     setTimeout(() => {
       console.log('changed');
       this.searchHotel();
@@ -49,12 +48,12 @@ export class FindDetailsComponent implements OnInit {
           console.log('hotels are avilable' + '00000');
         }
 
-    });
+      });
   }
 
-  moreData(i: number): void{
-    console.log('selected ' + this.rows[i].hotelName );
-    console.log('selected ' + this.rows[i].toString() );
+  moreData(i: number): void {
+    console.log('selected ' + this.rows[i].hotelName);
+    console.log('selected ' + this.rows[i].toString());
     this._global.setHotelname(this.rows[i].hotelName);
     this._router.navigate(['/home/data']);
   }
@@ -65,7 +64,6 @@ export class FindDetailsComponent implements OnInit {
     this._global.setUpdateObject(this.rows[i]);
     this._router.navigate(['/home/enter']);
   }
-
 
 
 }
