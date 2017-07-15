@@ -11,14 +11,23 @@
 var utills = require('../utills');
 var cityModel = require('../models/cityModel');
 
+
+/**
+ * this will be acted as a controller of the city model
+ * and manage http requests comes to
+ * @param app
+ */
 module.exports.cityControler = function (app) {
 
     /**
-     * this method reteve one city via hiip
+     * this method reteve a city
+     * name of the city should be a attached to the  url
+     * :name
      */
-    app.get('/get/city:name',function (req,res) {
+    app.get('/get/city/:name',function (req,res) {
+        console.log('access the get method for '+req.url);
         utills.DBConnection();
-        var selection  ={eMail:req.params.name};
+        var selection  ={city:req.params.name};
         var projection ={__v:false,_id:false};
 
         cityModel.City.find(selection,projection,function (err,user) {
@@ -35,7 +44,7 @@ module.exports.cityControler = function (app) {
     });
 
     /**
-     * assign new user data to the user model
+     * this post method is used to save new city
      */
     app.post('/post/city',function (req,res) {
         utills.DBConnection();

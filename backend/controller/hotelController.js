@@ -155,7 +155,6 @@
                      }else {
                          console.log('error ocuer while retreving data from city collection')
                      }
-
                      res.status(200).send({message:'success',status:200,content:result});
                  });
 

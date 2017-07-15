@@ -12,7 +12,7 @@ var schema  = mongoose.Schema;
 
 var city = new schema({
     zip         :{type:String,require:true,unique:true},
-    cityName    :{type:String,require:true},
+    cityName    :{type:String,require:true,unique:true},
     district    :{type:String,require:true},
     province    :{type:String,require:true},
     enterBy    :String

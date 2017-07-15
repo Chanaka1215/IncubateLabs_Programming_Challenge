@@ -11,6 +11,11 @@ var city  = require('./cityController');
 var hotel = require('./hotelController');
 var user  =require('./userController');
 
+/**
+ * this module work as a index
+ * instance of a express app have been pased to all controllers
+ * @param app
+ */
 module.exports.controllers = function(app){
 
     city.cityControler(app);
