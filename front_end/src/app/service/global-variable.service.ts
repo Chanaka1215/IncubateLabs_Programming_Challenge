@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class GlobalVariableService {
   public username: string;
-  public email: string;
+  public editRecord: any;
   public hotelName: string;
   public baseURL = 'http://54.71.181.55:8001';
   public session = false;
@@ -35,12 +35,12 @@ export class GlobalVariableService {
     return this.session;
   }
 
-  public setEmail(e: string): void {
-    this.email = e;
+  public setUpdateObject(e: any): void {
+    this.editRecord = e;
   }
 
-  public  getEmail(): string {
-    return this.email;
+  public  getupdateObject(): any {
+    return this.editRecord;
   }
 
   public getBaseUrl(): string {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpRequestService} from '../../service/http-request.service';
 import {GlobalVariableService} from '../../service/global-variable.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-find-details',
@@ -14,8 +14,8 @@ export class FindDetailsComponent implements OnInit {
   public rows: any;
   public hotelsAvailabla = false;
   public totalHotels = 0;
-  public selectedIndex:number;
-  public hotel :string;
+  public selectedIndex: number;
+  public hotel : string;
 
   constructor (private _httpService: HttpRequestService, private _global: GlobalVariableService, private _router: Router) {
   }
@@ -43,10 +43,17 @@ export class FindDetailsComponent implements OnInit {
     });
   }
 
-  moreData(i: number){
-    console.log("selected "+ this.rows[i].hotelName );
+  moreData(i: number): void{
+    console.log('selected ' + this.rows[i].hotelName );
+    console.log('selected ' + this.rows[i].toString() );
     this._global.setHotelname(this.rows[i].hotelName);
     this._router.navigate(['/home/data']);
+  }
+
+  update(i): void {
+    this._global.setHotelname(this.rows[i].hotelName);
+    this._global.setUpdateObject(this.rows[i]);
+    this._router.navigate(['/home/enter']);
   }
 
 

@@ -28,6 +28,16 @@ export class EnterDetailsComponent implements OnInit {
     }else{
       this.hotelModel.enterBy = this._global.getUserName();
       console.log(this.hotelModel);
+
+      if(this._global.getupdateObject()){
+        var obj = this._global.getupdateObject();
+        console.log(obj);
+        this.hotelModel.hName =obj.hotelName;
+        this.hotelModel.hAddress=obj.address;
+        this.hotelModel.hLocation=obj.city;
+        this.hotelModel.hDesc =obj.hDesc;
+
+      }
     }
   }
 
@@ -46,9 +56,9 @@ export class EnterDetailsComponent implements OnInit {
           }
         }
 
-      ); }
+      );
 
-
+  }
 
 
 

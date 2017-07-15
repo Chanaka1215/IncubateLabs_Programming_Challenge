@@ -99,6 +99,7 @@
                  result.hAddress = data[0].address;
                  result.hCity    = data[0].city;
                  result.hDesc    = data[0].hDesc;
+                 result.hEnterBy = data[0].enterBy;
 
 
                  console.log(";;;;;"+data[0].enterBy)
