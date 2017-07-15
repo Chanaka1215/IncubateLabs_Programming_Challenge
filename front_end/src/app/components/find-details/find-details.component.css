@@ -7,6 +7,10 @@
  * Package            : .
  */
 
+.rm-mar-pad{
+  margin: 0%;
+  padding: 0%;
+}
 
 .navigation{
   background: url("/assets/img/back.jpg") no-repeat;

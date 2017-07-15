@@ -1,4 +1,4 @@
-
+<div class="rm-mar-pad" style="padding-bottom: 30px">
   <div class="navigation">
     <div class="title">
       <h3>Search <span>Hotels</span></h3>
@@ -7,48 +7,51 @@
   </div>
     <form class="search-box">
         <div class="input-group col-md-12 ">
-            <span class="input-group-addon"  id="basic-addon1" style="  height: 50px"><i class="material-icons">search</i> </span>
+            <span class="input-group-addon"  id="basic-addon1" style="  height: 50px" (click)="searchHotel()"><i class="material-icons">search</i> </span>
             <input class="form-control " style="  height: 50px;" aria-describedby="basic-addon1" type="text" placeholder="Enter city name..." name="location" [(ngModel)]="location" (keyup)="searchHotel()">
-            <div class="alert alert-success" role="alert"   > {{totalHotels}} Founds</div>
+            <div class="alert alert-success" role="alert"   > Found {{ totalHotels }} s </div>
         </div>
     </form>
   <div class="col-md-12 form" *ngIf="hotelsAvailabla">
     <md-card class="rm-mar-pad" style="background-color: #dff0d8">
       <div style="width: 100%" class="rm-mar-pad">
-        <span style="width: 10%;display: inline-block">#</span>
-        <span style="width: 25%;display: inline-block"> Name</span>
-        <span style="width: 35%; display: inline-block">Address</span>
-        <span style="width: 18%; display: inline-block">Town</span>
-        <span style="width: 7%; display: inline-block">Info</span>
-        <span style="width: 7%; display: inline-block"></span>
+        <span style="width: 5%;display: inline-block"></span>
+        <span style="width: 35%;display: inline-block"> Name</span>
+        <span style="width: 50%; display: inline-block">Address</span>
+        <!--<span style="width: 18%; display: inline-block">Town</span>-->
+        <span style="width: 5%; display: inline-block">Info</span>
+        <span style="width: 5%; display: inline-block"></span>
       </div>
+
+
+      <md-card class="rm-mar-pad">
+        <table style="width: 100%">
+          <tr>
+            <th style="width: 5%;"></th>
+            <th style="width: 35%;"></th>
+            <th style="width: 50%;"></th>
+            <!--<th style="width: 15%;"></th>-->
+            <th style="width: 5%;"></th>
+            <th style="width: 5%;"></th>
+          </tr>
+
+          <tr *ngFor="let row of rows let i=index" style="border-bottom: solid 1px #1e90ff" >
+            <td>{{i+1 }}</td>
+            <td>{{row.hotelName}}</td>
+            <td>{{row.address}}</td>
+            <!--<td>{{row.city}}</td>-->
+            <td><button md-raised-button color="green" (click)="moreData(i)" >More</button></td>
+            <td><button md-raised-button color="accent" (click)="update(i)" >Update</button></td>
+
+
+          </tr>
+
+        </table>
+      </md-card>
     </md-card>
-    <md-card class="rm-mar-pad" style="height: auto;">
-      <table style="width: 100%">
-        <tr>
-          <th style="width: 10%;"></th>
-          <th style="width: 25%;"></th>
-          <th style="width: 35%;"></th>
-          <th style="width: 15%;"></th>
-          <th style="width: 5%;"></th>
-          <th style="width: 5%;"></th>
-        </tr>
 
-        <tr *ngFor="let row of rows let i=index" >
-          <td># {{i+1}}</td>
-          <td>{{row.hotelName}}</td>
-          <td>{{row.address}}</td>
-          <td>{{row.city}}</td>
-          <td><button md-raised-button color="green" (click)="moreData(i)" >Info</button></td>
-          <td><button md-raised-button color="accent" (click)="update(i)" >Update</button></td>
-
-
-        </tr>
-
-      </table>
-    </md-card>
 
   </div>
 
 
-
+</div>
