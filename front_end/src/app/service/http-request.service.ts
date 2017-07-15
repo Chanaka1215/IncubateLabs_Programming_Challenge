@@ -12,7 +12,8 @@ export class HttpRequestService {
   }
 
   getHotel(sortOrder:string) {
-    return this._http.get(this._global.getBaseUrl() + '/get/hotels/' + this.location.toUpperCase()+'/'+this.sortOrder)
+    console.log('sort order'+ sortOrder);
+    return this._http.get(this._global.getBaseUrl() + '/get/hotels/' + this.location.toUpperCase()+'/'+ sortOrder)
       .map(res => res.json());
   }
 

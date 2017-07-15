@@ -23,7 +23,7 @@ import {
   MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdDatepickerModule, MdIconModule, MdInputModule,
   MdListModule,
   MdMenuModule,
-  MdPaginatorModule,
+  MdPaginatorModule, MdRadioModule,
   MdSelectModule,
   MdSidenavModule, MdSliderModule, MdSlideToggleModule, MdSnackBar, MdSortModule, MdTableModule,
   MdTabsModule, MdToolbarModule
@@ -74,7 +74,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MdCardModule,
     MdIconModule,
     MdChipsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MdRadioModule
   ],
   providers: [GlobalVariableService, HttpRequestService, MdSnackBar],
   bootstrap: [AppComponent],

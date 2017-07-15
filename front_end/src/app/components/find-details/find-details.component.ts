@@ -16,7 +16,7 @@ export class FindDetailsComponent implements OnInit {
   public totalHotels = 0;
   public selectedIndex: number;
   public hotel : string;
-  public orderBy:string='1';
+  public orderBy:string;
 
   constructor (private _httpService: HttpRequestService, private _global: GlobalVariableService, private _router: Router) {
   }

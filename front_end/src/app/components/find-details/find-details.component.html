@@ -11,17 +11,21 @@
             <input class="form-control " style="  height: 50px;" aria-describedby="basic-addon1" type="text" placeholder="Enter city name..." name="location" [(ngModel)]="location" (keyup)="searchHotel()">
             <div class="alert alert-success" role="alert"   > Found {{ totalHotels }} s </div>
         </div>
+
+
+
+      <md-radio-group (click)="searchHotel()" name="radio" [(ngModel)]="radio" >
+        <md-radio-button   [value]="1" >Accending Order</md-radio-button>
+        <md-radio-button   [value]="-1">Decending Order</md-radio-button>
+      </md-radio-group>
+     <div >Your favorite season is: {{radio}}</div>
+
+
     </form>
   <div class="col-md-12 form" *ngIf="hotelsAvailabla">
-    <input (click)="searchHotel()">
-    <md-radio-group  [(ngModel)]="favoriteSeason" >
-      <md-radio-button   [value]="1" >Accending Order</md-radio-button>
-      <md-radio-button   [value]="-1">Decending Order</md-radio-button>
-    </md-radio-group>
-    </input>
 
 
-    <div class="example-selected-value">Your favorite season is: {{favoriteSeason}}</div>
+
     <md-card class="rm-mar-pad" style="background-color: #dff0d8">
       <div style="width: 100%" class="rm-mar-pad">
         <span style="width: 5%;display: inline-block"></span>

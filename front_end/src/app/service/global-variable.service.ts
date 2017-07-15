@@ -5,7 +5,7 @@ export class GlobalVariableService {
   public username: string;
   public editRecord: any;
   public hotelName: string;
-  public baseURL = 'http://54.71.181.55:8001';
+  public baseURL = 'http://54.71.181.55:8001'; //http://localhost:8001'; //'http://54.71.181.55:8001';
   public session = false;
 
   constructor() { }
