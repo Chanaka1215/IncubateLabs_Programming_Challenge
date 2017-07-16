@@ -41,8 +41,8 @@ The structure of the RESTful API.
 This contain 3 folders controller, Models and Views
 >>Inside the controller folder i have created 
 
-        1.cityController.js    As the controller for the 'city' model. it contain basic DB related 
-                                functions and end points that is needed for get and send data.  
+        1.cityController.js    As the controller for the 'city' model. it contain basic city model related 
+                                functions and end points that is needed for get and send data via http.  
         
         2.hotelController.js   as the controller for the 'hotel' model, and contain basic functions 
                                 and end-points
