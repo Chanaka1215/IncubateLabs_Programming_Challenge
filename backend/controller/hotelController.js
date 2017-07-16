@@ -188,8 +188,7 @@ module.exports.hotelControler = function (app) {
                          result.hZip =city.zip;
                          result.hDist=city.district;
                          result.hPro=city.province;
-                     }
-                     else(err){
+                     } else if(err){
                          console.log('error ocuer while retreving data from city collection')
                      }
 
