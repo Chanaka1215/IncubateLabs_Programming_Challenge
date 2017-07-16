@@ -102,9 +102,9 @@ step 5 => open the front end foldr usind a IDE or navigate to the folder using c
   
   >npm install 
   
-  Now ypu can access the backend app from http://localhost:8001/ url and you will see the index file that include all the end points
+  Now ypu can access the backend app from http://localhost:8001/ url and you will see the index file that include all the end    points.
   
-  this url 
+
   
   
   # Run the Angular App in production mode 
