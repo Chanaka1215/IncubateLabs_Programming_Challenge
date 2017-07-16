@@ -1,5 +1,5 @@
 # Chanlange "Create a web application for adding/searching hotels in Sri Lanka" 
-programming chalange for the internship 
+programming chalange from IncubateLab for the internship 
 
    To solve the chalange I had to deal with front-end, back-end and Database development technologies, Here i have used 
 Angular 2 framework as  front-end developments with HTML CSS and Angular Material Design. In oreder to develop the backend I have 
