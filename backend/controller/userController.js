@@ -21,13 +21,13 @@ module.exports.userControler = function (app) {
     app.get('/get/user/:userName',function (req,res) {
         console.log("access the end point get user "+ req.url);
         utills.DBConnection();
-        var selection  ={eMail:req.params.userName};
+        var selection  ={userName:req.params.userName};
         var projection ={__v:false,_id:false,password:false};
         userModel.User.find(selection,projection,function (err,user) {
             if(err){
                 console.log('eror occur when geting a user ==>'+ err.message );
                 res.status(400).send({message:'internal error',status:400,content:err});
-            }else {
+            }else if(user){
                 console.log('sucessfully retreved user data');
                 res.status(200).send({message:'success',status:200,content:user});
             }
