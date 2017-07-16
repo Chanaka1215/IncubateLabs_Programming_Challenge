@@ -182,13 +182,14 @@ module.exports.hotelControler = function (app) {
                  });
 
                  //get a city object from database pasing city name
-                 cityController.FindCityByName(data[0].city,function (city) {
+                 cityController.FindCityByName(data[0].city,function (err,city) {
                      console.log('result city '+city);
                      if(city){
                          result.hZip =city.zip;
                          result.hDist=city.district;
                          result.hPro=city.province;
-                     }else {
+                     }
+                     else(err){
                          console.log('error ocuer while retreving data from city collection')
                      }
 
