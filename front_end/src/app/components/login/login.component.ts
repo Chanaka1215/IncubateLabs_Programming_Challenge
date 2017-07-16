@@ -83,6 +83,7 @@ export class LoginComponent implements OnInit {
    */
   paswordMacher(): boolean {
 
+    var result :boolean;
     const pass = this.regModel.password;
     const rePass = this.regModel.rePassword;
     console.log(pass + ' ' + rePass);
@@ -103,11 +104,12 @@ export class LoginComponent implements OnInit {
       this.passMatch = 1;
     }
 
-    if (this.passMatch === 1 && this.regModel.password.length === 8) {
-      return true;
+    if (this.passMatch === 2 && (this.regModel.rePassword.length === 8 && this.regModel.password.length === 8) ) {
+      result = true;
     } else {
-      return false;
+      result = false;
     }
+    return result;
   }
 
   /**
@@ -147,7 +149,7 @@ export class LoginComponent implements OnInit {
    * set the response to display
    */
   isValidUser(): void {
-    if (this.paswordMacher() && this.isValidEmail() && this.isValidName()){
+    if (this.paswordMacher()  && (this.isValidEmail() && this.isValidName())){
       const user = this.regModel;
       let responce : number;
       this._httpService.registerNewUser(user)
@@ -160,9 +162,11 @@ export class LoginComponent implements OnInit {
 
             },
           () => {
-            console.log('sucsess');
+
             this.passMatch = 0;
             if (responce === 200){
+              console.log('sucsess' +responce);
+
               this.regResponceMsg =  'User registration succsesfull';
             }else if (responce === 202){
               this.regResponceMsg =  'This Username has already taken';
@@ -176,7 +180,7 @@ export class LoginComponent implements OnInit {
         this.regResponceMsg =  'Check the Username it must be between 5 - 10 characters';
       }else if (!this.isValidEmail()){
         this.regResponceMsg = 'check your email it seems net valid';
-      }else if (this.paswordMacher()){
+      }else if (!this.paswordMacher()){
         this.regResponceMsg = 'Check your password it must have 8 characters';
       } else {
         this.regResponceMsg =  null;

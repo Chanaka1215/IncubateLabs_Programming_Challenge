@@ -30,3 +30,14 @@
 .form-well{
   margin-bottom: 40px;
 }
+
+.login-button{
+width:100%;
+  margin-top: 15%;
+  margin-bottom: 10px;
+}
+
+.l-responce{
+ height: 50px;
+  font-size: 16px;
+}

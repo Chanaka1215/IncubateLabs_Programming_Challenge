@@ -15,18 +15,16 @@
         <form #loginForm="ngForm">
           <br/>
           <md-input-container style="width:100%">
-            <input mdInput style="color:black" type="text" name="userName" required [(ngModel)]="loginmodel.name"
-                   #userName="ngModel" placeholder="User Name">
+            <input mdInput style="color:black" type="text" name="userName" required [(ngModel)]="loginmodel.name" #userName="ngModel" placeholder="User Name">
           </md-input-container>
-
           <md-input-container style="width:100%">
-            <input mdInput style="color:black" type="password" name="password" required [(ngModel)]="loginmodel.password" #password="ngModel" placeholder="Password">
+            <input mdInput [maxlength]="8"  type="password" name="password" required [(ngModel)]="loginmodel.password" #password="ngModel" placeholder="Password">
           </md-input-container>
-          <div *ngIf="loginResponceMsg != null" class="alert alert-info" style="height: 50px;font-size: 16px">
+          <div *ngIf="loginResponceMsg != null" class="alert alert-info l-responce" >
             {{loginResponceMsg}}
           </div>
 
-          <button md-raised-button color="primary" style="width:100%; margin-top: 15%; margin-bottom: 10px" (click)="checkLogin()">Login</button>
+          <button md-raised-button color="primary" class="login-button" [disabled]=" (loginmodel.password.length != 8 ) "  (click)="checkLogin()">Login</button>
         </form>
 
       </md-tab>
@@ -35,20 +33,20 @@
         <form class="form-well" #regForm="ngForm">
           <br/>
           <md-input-container style="width:100%">
-            <input mdInput style="color:black" type="text" id="Name" name="name" required [(ngModel)]="regModel.userName" #name="ngModel" placeholder="User Name">
+            <input mdInput style="color:black" type="text"  name="name" required [(ngModel)]="regModel.userName" #name="ngModel" placeholder="User Name">
           </md-input-container>
           <!--<md-input-container style="width:100%">-->
           <!--<input mdInput style="color:black" type="text" id="phone" name="mobile" required [(ngModel)]="regModel.mobile" #mobile="ngModel" placeholder="Mobile">-->
           <!--</md-input-container>-->
           <md-input-container style="width:100%">
-            <input mdInput style="color:black" type="email" id="email" name="email" required [(ngModel)]="regModel.email" #email="ngModel" placeholder="Email">
+            <input mdInput style="color:black" type="email"  name="email" required [(ngModel)]="regModel.email" #email="ngModel" placeholder="Email">
           </md-input-container>
           <md-input-container style="width:100%">
-            <input mdInput style="color:black" type="password" id="pass" name="pass" required [(ngModel)]="regModel.password" #pass="ngModel" placeholder="Password" (keyup)="paswordMacher()">
+            <input mdInput  [maxlength]="8" style="color:black" type="password" name="pass" required [(ngModel)]="regModel.password" #pass="ngModel" placeholder="Password" (keyup)="paswordMacher()">
           </md-input-container>
 
           <md-input-container style="width:100%">
-            <input mdInput style="color:black ; " type="password" id="repass" name="repass" required [(ngModel)]="regModel.rePassword" #repass="ngModel" placeholder="ReEnter Password" (keyup)="paswordMacher()">
+            <input mdInput  [maxlength]="8" style="color:black ; " type="password"  name="repass" required [(ngModel)]="regModel.rePassword" #repass="ngModel" placeholder="ReEnter Password" (keyup)="paswordMacher()">
           </md-input-container>
           <div *ngIf="passMatch == 2" class="alert alert-success" role="alert">match passwords</div>
           <div *ngIf="passMatch == 1" class="alert alert-danger" role="alert">Does not match passwords</div>
@@ -56,8 +54,7 @@
 
 
           <br/>
-          <button md-raised-button color="primary" style="width:100%; margin-top: 2%; margin-bottom: 10px"
-                  (click)="isValidUser()">Register
+          <button md-raised-button color="primary"  [disabled]="passMatch != 2"  style="width:100%; margin-top: 2%; margin-bottom: 10px" (click)="isValidUser()">Register
           </button>
 
         </form>
