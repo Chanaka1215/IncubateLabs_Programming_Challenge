@@ -14,8 +14,8 @@
     </div>
     <div input-group col-md-12 style="margin-left: 5%">
       <md-radio-group *ngIf="hotelsAvailabla" (click)="isOrderChanged()" name="radio" [(ngModel)]="orderBy">
-        <md-radio-button [value]="1">Accending Order</md-radio-button>
-        <md-radio-button [value]="-1">Decending Order</md-radio-button>
+        <md-radio-button [value]="1">Ascending Order</md-radio-button>
+        <md-radio-button [value]="-1">Descending Order</md-radio-button>
       </md-radio-group>
     </div>
 
@@ -55,10 +55,7 @@
             <td>
               <button md-raised-button color="accent" (click)="update(i)">Update</button>
             </td>
-
-
           </tr>
-
         </table>
       </md-card>
     </md-card>
