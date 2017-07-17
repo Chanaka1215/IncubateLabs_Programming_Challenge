@@ -49,7 +49,7 @@ module.exports.cityControler = function (app) {
      * this method reteve a All enterd city
      * :name
      */
-    app.get('/get/all-city',function (req,res) {
+    app.get('/get/all-cities',function (req,res) {
         console.log('access the get method for '+req.url);
         utills.DBConnection();
         var selection  ={ };
