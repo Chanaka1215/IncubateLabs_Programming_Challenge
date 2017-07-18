@@ -22,7 +22,7 @@ var utills = require('./utills');               //import DB utillity class
 var controllers = require('./controller/index'); // import the index file
 
 
-var app = express();                                      //get Express 4 framework nstance to app
+var app = express();                                      //get Express  instance to app
 app.use(bodyParser.json({limit:'1mb'}));                  //use body paser in this app to send jason data via body
 app.use(bodyParser.urlencoded({extended:true, limit:'1mb'}));
 app.use(cors());                                            // active CORS

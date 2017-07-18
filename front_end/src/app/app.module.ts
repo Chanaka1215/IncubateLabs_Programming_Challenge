@@ -18,14 +18,11 @@ import {LoginComponent} from './components/login/login.component';
 import {HomeComponent} from './components/home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MaterialModule,
-  MdAutocompleteModule,
-  MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdDatepickerModule, MdIconModule, MdInputModule,
-  MdListModule,
+  MdButtonModule, MdCardModule,  MdChipsModule,  MdIconModule, MdInputModule,
   MdMenuModule,
-  MdPaginatorModule, MdRadioModule,
+  MdRadioModule,
   MdSelectModule,
-  MdSidenavModule, MdSliderModule, MdSlideToggleModule, MdSnackBar, MdSortModule, MdTableModule,
+  MdSnackBar,
   MdTabsModule, MdToolbarModule
 } from '@angular/material';
 import {EnterDetailsComponent} from './components/enter-details/enter-details.component';
@@ -33,7 +30,7 @@ import {FindDetailsComponent} from './components/find-details/find-details.compo
 import {HttpRequestService} from './service/http-request.service';
 import {GlobalVariableService} from './service/global-variable.service';
 import {OverviewComponent} from './components/overview/overview.component';
-import {FlexLayoutModule} from "@angular/flex-layout";
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 @NgModule({
@@ -66,7 +63,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     FlexLayoutModule,
     MdRadioModule
   ],
-  providers: [GlobalVariableService, HttpRequestService, MdSnackBar],
+  providers: [GlobalVariableService, HttpRequestService],
   bootstrap: [AppComponent],
   entryComponents: [EnterDetailsComponent]
 })

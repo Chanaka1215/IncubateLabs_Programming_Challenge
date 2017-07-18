@@ -6,6 +6,7 @@
  * Belongs to Project : backend.
  * Package            : .
  */
+
  var utills = require('../utills');
  var hotelModel = require('../models/hotelModel');
  var cityController =require('./cityController');

@@ -34,6 +34,7 @@ export class HttpRequestService {
       .map(res => res.json());
   }
 
+
   updateHotelData(object: any) {
     console.log('access postLoggingData...');
     const obj = JSON.stringify(object);
