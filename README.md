@@ -1,7 +1,7 @@
 # Challenge "Create a web application for adding/searching hotels in Sri Lanka" 
 programming challenge from IncubateLab for the internship 
 
-   To solve the chalange I had to deal with front-end, back-end and Database development technologies, Here i have used 
+   To solve the challenge I had to deal with front-end, back-end and Database development technologies, Here i have used 
 Angular 2 framework as  front-end developments with HTML CSS and Angular Material Design. In oreder to develop the backend I have 
 used Express 4+ freamework of nodeJs serverside runtime.For the database ,selected MongoDB that is NoSQL/non-Relational Database with the help of 
 Mongoose middleware. 
